@@ -1,8 +1,11 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.mainContain{
+  display: flex;
+  flex-flow: row;
+  margin-left: 70px;
 }
 
-a {
-  color: #00B7FF;
+.mainTruck, .mainReview{
+  width: 550px;
+  margin-right: 50px;
+  padding:5px;
 }
