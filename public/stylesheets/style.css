@@ -10,6 +10,44 @@
   padding:5px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Truck Profile Css*/
 .profileContain{
   display: flex;
   flex-flow: row;
@@ -77,4 +115,27 @@
 
 .Saturday{
   background-color: #7BAF62;
+}
+
+.profileJumboAdjust{
+  width:75vw;
+  margin-left: 11%;
+  padding:1vw;
+}
+
+.reviewContain{
+  border-radius: .5em;
+  border: .25vw groove grey;
+  padding: 1vw;
+  width: 60vw;
+  margin-bottom: 1vw;
+}
+
+.reviewContain > div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.reviewText{
+  font-size: 1.25vw !important;
 }
