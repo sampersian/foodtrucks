@@ -9,3 +9,72 @@
   margin-right: 50px;
   padding:5px;
 }
+
+.profileContain{
+  display: flex;
+  flex-flow: row;
+  padding:1vw;
+}
+
+.truckProfileContain{
+  display: flex;
+  flex-flow: column;
+}
+
+.logoContain{
+  width: 17vw;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.truckProfilePic{
+  height: 33.75vw;
+  width: 50vw;
+  max-height: 33.75vw;
+  max-width: 50vw;
+}
+
+.panel, .panleDanger{
+  width: 45vw !important;
+  margin-right: 3vw !important;
+}
+
+.schedule{
+  width: auto;
+  display: flex;
+  flex-flow: row;
+  padding: 0vw !important;
+}
+
+.schedule > div{
+  height: 7.5vw;
+  width: 10vw;
+}
+
+.Sunday{
+  background-color:#3A86FF;
+}
+
+.Monday{
+  background-color: #C04CFD;
+}
+
+.Tuesday{
+  background-color: #8338EC;
+}
+
+.Wednesday{
+  background-color: #E81B1B;
+}
+
+.Thursday{
+  background-color: #FB5607;
+}
+
+.Friday{
+  background-color: #FFBE0B;
+}
+
+.Saturday{
+  background-color: #7BAF62;
+}
