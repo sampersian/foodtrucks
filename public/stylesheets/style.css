@@ -45,28 +45,28 @@
 
 
 
+.scheduleDay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+.scheduleDayName {
+  color: white;
+  display: block;
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+}
 
+.scheduleTime {
+  display: block;
+  color: black;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.scheduleLocation {
+  display: block;
+  color: navy;
+}
 
 /*Truck Profile Css*/
 .profileContain{
