@@ -19,4 +19,8 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
+router.get('/truck/:id/profile', function(req,res,next){
+  res.render('truckProfile', {title: 'Express'});
+})
+
 module.exports = router;
