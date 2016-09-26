@@ -1,30 +1,30 @@
-<form class="form-horizontal">
-  <fieldset>
-    <legend>Login</legend>
-    <div class="form-group">
-      <label for="inputEmail" class="col-lg-2 control-label">Email</label>
-      <div class="col-lg-10">
+<main class="myMain">
+  <form class="loginForm">
+    <fieldset>
+      <div class="formTopper">
+        <h3>Login</h3>
+        <a href="/signup" class="btn btn-info">Register for account</a>
+      </div>
+      <hr>
+      <div class="form-group">
+        <label for="inputEmail" class="control-label">Email</label>
         <input type="text" class="form-control" id="inputEmail" placeholder="Email">
       </div>
-    </div>
-    <div class="form-group">
-      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-      <div class="col-lg-10">
+      <div class="form-group">
+        <label for="inputPassword" class="control-label">Password</label>
         <input type="password" class="form-control" id="inputPassword" placeholder="Password">
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <button type="submit" class="btn btn-primary">Login</button>
+      <div class="form-group">
+          <button type="submit" class="form-control btn btn-success">Login</button>
       </div>
-    </div>
-    <div class="form-group">
-      <div class="col-lg-10 col-lg-offset-2">
-        <div class="form-group">
-          <h2>Don't have an account?</h2>
+      <!-- <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <div class="form-group">
+            <h2>Don't have an account?</h2>
+          </div>
+          <a href="/signup" class="btn btn-primary">Register for account</a>
         </div>
-        <a href="/signup" class="btn btn-primary">Register for a truck owner or user account</a>
-      </div>
-    </div>
-  </fieldset>
-</form>
+      </div> -->
+    </fieldset>
+  </form>
+</main>
