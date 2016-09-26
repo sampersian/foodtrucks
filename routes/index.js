@@ -37,9 +37,7 @@ router.get('/truck/new', function (req, res, next) {
 
 router.post('/truck/new', function (req, res, next) {
   console.log(req.body);
-  res.render('owner', {
-    ownerInfo: {};
-  })
+  res.render('owner')
 })
 
 router.get('/truck/:id/profile', function(req,res,next) {
