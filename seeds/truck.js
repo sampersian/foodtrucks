@@ -19,7 +19,7 @@ exports.seed = function(knex, Promise) {
           truck_name:"Burger Food Truck",
           image_url: 'https://upload.wikimedia.org/wikipedia/en/d/d1/CaliBurger_food_truck_Germany.jpg',
           genre:'Hamburgers',
-          description: 'This truck sells hamburgers like they make the in California.'
+          description: 'This truck sells hamburgers like they make them in California.'
         }),
         knex('truck').insert({
           id: 3,
