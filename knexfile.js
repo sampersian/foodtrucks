@@ -3,7 +3,9 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: ''
+    connection: {
+      database: 'foodtrucks'
+    }
   },
   production: {
     client: 'pg',
