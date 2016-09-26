@@ -10,19 +10,24 @@ exports.seed = function(knex, Promise) {
           first_name: 'Arlo',
           last_name: 'Shaver',
           username: 'M3atMast3r',
-          password: ''
+          password: 'tempPass',
+          email: '1234@freemail.com'
         }),
         knex('owner').insert({
-          id: 1,
-          colName: 'rowValue1'
+          id: 2,
+          first_name: 'Maia',
+          last_name: 'Samuel',
+          username: 'MaiaSamuel',
+          password: 'tempPass',
+          email: '1234@freemail.com'
         }),
         knex('owner').insert({
-          id: 1,
-          colName: 'rowValue1'
-        }),
-        knex('owner').insert({
-          id: 1,
-          colName: 'rowValue1'
+          id: 3,
+          first_name: 'Sam',
+          last_name: 'Persian',
+          username: 'SamPersian',
+          password: 'tempPass',
+          email: '1234@freemail.com'
         }),
       ]);
     });
