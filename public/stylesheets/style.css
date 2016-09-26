@@ -11,9 +11,27 @@
 }
 
 
+/*START SIGNUP PAGE*/
+.myMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 
+.signupForm {
+  width: 50%;
+  min-width: 400px;
+  display: none;
+}
 
-
+.formTopper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+/*END SIGNUP PAGE*/
 
 
 

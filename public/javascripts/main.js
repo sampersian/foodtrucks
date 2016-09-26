@@ -7,4 +7,8 @@ $(document).ready(function() {
   }
 })
 
-// $('.ownerSignupForm').submit()
+function showForm(aForm) {
+  $('.signupForm').hide()
+  let formName = aForm+"SignupForm";
+  $('.'+formName).show()
+}
