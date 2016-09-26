@@ -17,5 +17,11 @@ function initMap() {
         scrollwheel: false,
         zoom: 15
       });
+
+      var marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng,
+        title: 'You are here!'
+      });
   });
 }
