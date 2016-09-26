@@ -1,0 +1,100 @@
+<style>
+  .myMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .signupForm {
+    width: 50%;
+    min-width: 400px;
+    display: none;
+  }
+  .ownerSignupForm {
+  }
+  .userSignupForm {
+  }
+  .formTopper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>
+<main class="myMain">
+  <form class="signupForm ownerSignupForm" action="/signup" method="post">
+    <div class="formTopper">
+      <h3>Owner Signup</h3>
+      <button type="button" class="btn btn-info" name="showUserSignupButton" onclick="showForm('user')">User Signup</button>
+    </div>
+    <div class="form-group">
+      <label>First</label>
+      <input type="text" class="form-control" id="ownerSignupFirst" name="ownerSignupFirst" placeholder="First Name" required>
+    </div>
+    <div class="form-group">
+      <label>Last</label>
+      <input type="text" class="form-control" id="ownerSignupLast" name="ownerSignupLast" placeholder="Last Name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" id="ownerSignupEmail" name="ownerSignupEmail" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" id="ownerSignupUsername" name="ownerSignupUsername" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" id="ownerSignupPassword" name="ownerSignupPassword" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="ownerSignupPassword2" name="ownerSignupPassword2" placeholder="Password Match" required>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-success" id="ownerSignupSubmit" name="ownerSignupSubmit" value="Submit">
+      <input type="hidden" name="signupType" value="owner">
+    </div>
+  </form>
+
+  <form class="signupForm userSignupForm" action="/signup" method="post">
+    <div class="formTopper">
+      <h3>User Signup</h3>
+      <button type="button" class="btn btn-info" name="showUserSignupButton" onclick="showForm('owner')">Owner Signup</button>
+    </div>
+    <div class="form-group">
+      <label>First</label>
+      <input type="text" class="form-control" id="userSignupFirst" name="userSignupFirst" placeholder="First Name" required>
+    </div>
+    <div class="form-group">
+      <label>Last</label>
+      <input type="text" class="form-control" id="userSignupLast" name="userSignupLast" placeholder="Last Name" required>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" class="form-control" id="userSignupEmail" name="userSignupEmail" placeholder="Email" required>
+    </div>
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" class="form-control" id="userSignupUsername" name="userSignupUsername" placeholder="Username" required>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" class="form-control" id="userSignupPassword" name="userSignupPassword" placeholder="Password" required>
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control" id="userSignupPassword2" name="userSignupPassword2" placeholder="Password Match" required>
+    </div>
+    <div class="form-group">
+      <input type="submit" class="form-control btn btn-success" id="userSignupSubmit" name="userSignupSubmit" value="Submit">
+      <input type="hidden" name="signupType" value="user">
+    </div>
+  </form>
+</main>
+
+<script type="text/javascript">
+  function showForm(aForm) {
+    $('.signupForm').hide()
+    let formName = aForm+"SignupForm";
+    $('.'+formName).show()
+  }
+</script>
