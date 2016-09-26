@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Food Trucks' });
 });
 
 router.get('/signup', function (req, res, next) {
@@ -19,8 +19,8 @@ router.get('/login', function(req, res, next) {
   res.render('login');
 });
 
-router.get('/truck/:id/profile', function(req,res,next){
-  res.render('truckProfile', {title: 'Express'});
+router.get('/truck/:id/profile', function(req,res,next) {
+  res.render('truckProfile', {title: 'Food Trucks'});
 })
 
 module.exports = router;
