@@ -33,7 +33,10 @@
 }
 /*END SIGNUP PAGE*/
 
-
+.loginForm {
+  width: 50%;
+  min-width: 400px;
+}
 
 
 
