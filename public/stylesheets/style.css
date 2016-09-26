@@ -15,11 +15,16 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-#map {
-    height: 100%;
+}#map {
+  width: 100%;
+  height: 400px;
+  background-color: grey;
 }
 
+.myJumbo {
+  margin: 20px;
+  padding: 0px;
+}
 
 /*START SIGNUP PAGE*/
 .myMain {
@@ -47,13 +52,6 @@ html, body {
   width: 50%;
   min-width: 400px;
 }
-
-
-
-
-
-
-
 
 .scheduleDay {
   display: flex;
