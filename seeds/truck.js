@@ -11,7 +11,7 @@ exports.seed = function(knex, Promise) {
           truck_name:"Scharwma My Bones",
           image_url: 'https://cbsnewyork.files.wordpress.com/2013/01/shawarma-spits.jpg'
         }),
-        knex('table_name').insert({
+        knex('truck').insert({
           id: 2,
           owner_id:2,
           truck_name:"Scharwma My Bones",
