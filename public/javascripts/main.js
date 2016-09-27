@@ -1,3 +1,5 @@
+"use strict"
+
 let specified;
 let locations = [];
 $(document).ready(function() {

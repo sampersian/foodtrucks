@@ -1,3 +1,5 @@
+"use strict"
+
 let userLocation;
 function initMap() {
   let lat, lon;

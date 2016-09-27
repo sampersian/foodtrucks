@@ -1,3 +1,5 @@
+"use strict"
+
 var knex = require('./knex');
 var bcrypt = require('bcrypt');
 
