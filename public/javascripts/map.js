@@ -1,6 +1,6 @@
 "use strict"
 
-let userLocation;
+var userLocation;
 function initMap() {
   let lat, lon;
   navigator.geolocation.getCurrentPosition(function (position) {
@@ -26,7 +26,7 @@ function initMap() {
         position: myLatLng,
         title: 'You are here!'
       });
-      $.get('http://hipfoodtrucks.herokuapp.com/today/locations')
+      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
       // $.get('http://localhost:3000/today/locations')
       .then((data) => {
         for (d of data) {
@@ -35,11 +35,11 @@ function initMap() {
       })
       .then(() => {
         var pinColor = "4286f4";
-        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
             new google.maps.Size(21, 34),
             new google.maps.Point(0,0),
             new google.maps.Point(10, 34));
-        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        var pinShadow = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_shadow",
             new google.maps.Size(40, 37),
             new google.maps.Point(0, 0),
             new google.maps.Point(12, 35));
