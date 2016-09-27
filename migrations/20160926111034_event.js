@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('event', function(table){
     table.increments('id');
-    table.text('truck_id');
+    table.integer('truck_id');
     table.string('date');
     table.string('location');
     table.integer('open_time');

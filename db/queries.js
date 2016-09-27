@@ -44,8 +44,8 @@ module.exports = {
   getAllUsers: function(){
     return User();
   },
-  getAllSchedules: function(){
-    return Schedule();
+  getAllSchedules: function(id){
+    return Schedule().where('id', truck_id);
   },
   getAllEvents: function(){
     return Event();
