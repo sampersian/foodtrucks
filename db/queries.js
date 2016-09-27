@@ -24,6 +24,10 @@ var knex = require('./knex');
    return knex('review');
  }
 
+ function getOneTruck(id) {
+   return Truck().where('id', id);
+ }
+
 module.exports = {
   // Get All
   getAllOwners: function(){
@@ -69,4 +73,5 @@ module.exports = {
   getSingleReview: function(id){
     return Review().where('id', id)
   },
+  getOneTruck
 }

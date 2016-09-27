@@ -25,7 +25,7 @@ exports.seed = function(knex, Promise) {
           id: 3,
           owner_id:3,
           truck_name:"Sea On Wheels",
-          image_url: 'https://www.vecteezy.com/vector-art/98628-vector-seafood-truck.jpg',
+          image_url: 'https://static.vecteezy.com/system/resources/previews/000/098/628/original/vector-seafood-truck.jpg',
           genre: 'Seafood',
           description: 'We bring the sea to street. Find all of your favorite seafood here!'
         })
