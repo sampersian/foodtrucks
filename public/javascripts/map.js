@@ -9,11 +9,10 @@ function initMap() {
           position.coords.latitude, position.coords.longitude);
       lat = position.coords.latitude;
       lon = position.coords.longitude;
-      userlocation = {lat: lat, lng: lon};
       console.log("Lat: "+typeof position.coords.latitude);
       console.log("Lon: "+typeof position.coords.longitude);
       var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-      userLocation = myLatLng;
+      let userLocation = myLatLng;
       // Create a map object and specify the DOM element for display.
       var map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
