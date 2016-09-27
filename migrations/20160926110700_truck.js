@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments('id');
     table.text('owner_id');
     table.text('truck_name');
-    table.blob('image');
+    table.binary('truck_image');
     table.text('genre');
     table.text('description');
   })

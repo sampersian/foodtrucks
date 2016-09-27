@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
     table.text('username');
     table.text('password');
     table.text('email');
-    table.blob('profile_pic');
+    table.binary('profile_pic');
   })
 };
 
