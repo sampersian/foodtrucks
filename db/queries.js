@@ -38,6 +38,10 @@ function hashPassword(password) {
     return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('date', day);
   }
 
+  function GetScheduleTruck(id) {
+    return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('date', day);
+  }
+
 module.exports = {
   // Get All
   getAllOwners: function(){
