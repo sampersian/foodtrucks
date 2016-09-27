@@ -29,6 +29,10 @@ function hashPassword(password) {
    return knex('review');
  }
 
+ function getOneTruck(id) {
+   return Truck().where('id', id);
+ }
+
 module.exports = {
   // Get All
   getAllOwners: function(){
@@ -89,5 +93,6 @@ module.exports = {
       email: email
 		});
 
-  }
+  },
+  getOneTruck
 }

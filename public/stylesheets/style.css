@@ -1,5 +1,4 @@
 
-
 .thumb {
   height: 75px;
   border: 1px solid #000;
@@ -17,9 +16,6 @@
   margin-right: 50px;
   padding:5px;
 }
-
-
-
 
 html, body {
     height: 100%;
@@ -88,7 +84,12 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center space-between;
+}
+
+.truckName {
+  margin-bottom: 20px;
+  color: white;
 }
 
 .logoContain{
@@ -221,4 +222,14 @@ html, body {
 
 .reviewText{
   font-size: 1.25vw !important;
+}
+
+/*New truck page*/
+
+.newTruckForm {
+  height: 100%;
+  min-width: 400px;
+  font-size: 1.2em;
+  background-color: rgba(0,0,0,0.5);
+  padding: 5px 20px 10px 20px;
 }

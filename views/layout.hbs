@@ -24,21 +24,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
+            <li>
+              <div class="navbar-brand">
+
+              </div>
             </li>
           </ul>
-          <form class="navbar-form navbar-left" role="search">
+          <form class="navbar-form navbar-left"role="search">
+            <label>Select By </label>
+            <select class="form-control" id="select">
+              <option>Location</option>
+              <option>Food Truck Name</option>
+              <option>Food Type</option>
+            </select>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search">
             </div>
@@ -59,7 +57,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src='/javascripts/main.js'></script>
     <script src='/javascripts/map.js'></script>
-    <script src='/javascript/fileUpload.js'></script>
+    <script src='/javascripts/fileUpload.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC3pdD43USbZV5vRojdGTZ72TCr3b4ovs&callback=initMap"></script>
     </main>
   </body>

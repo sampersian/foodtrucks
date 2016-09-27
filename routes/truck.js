@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-// /truck 
+var queries = require('../db/queries.js');
+
+// /truck
 router.get('/new', function (req, res, next) {
   res.render('newTruck');
 })
@@ -11,8 +13,12 @@ router.post('/new', function (req, res, next) {
   res.render('owner')
 })
 
-router.get('/:id/profile', function(req,res,next) {
-  res.render('truckProfile', {title: 'Food Trucks'});
+router.get('/:id', function(req,res,next) {
+  return queries.getOneTruck(req.params.id)
+  .then((data) => {
+    console.log(data);
+    res.render('truck', {truck: data[0]});
+  })
 })
 
 module.exports = router;
