@@ -1,6 +1,6 @@
 "use strict"
 
-let userSpot;
+let userLocation;
 function initMap() {
   let lat, lon;
   navigator.geolocation.getCurrentPosition(function (position) {
@@ -9,11 +9,11 @@ function initMap() {
           position.coords.latitude, position.coords.longitude);
       lat = position.coords.latitude;
       lon = position.coords.longitude;
+      // userlocation = {lat: lat, lng: lon};
       console.log("Lat: "+typeof position.coords.latitude);
       console.log("Lon: "+typeof position.coords.longitude);
       var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
-      let userLocation = myLatLng;
-      userSpot = userLocation;
+      userLocation = myLatLng;
       // Create a map object and specify the DOM element for display.
       var map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
@@ -26,8 +26,8 @@ function initMap() {
         position: myLatLng,
         title: 'You are here!'
       });
-      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      // $.get('http://localhost:3000/today/locations')
+      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      $.get('http://localhost:3000/today/locations')
       .then((data) => {
         for (d of data) {
           geoCodeAddress(d.location, d);
@@ -35,17 +35,17 @@ function initMap() {
       })
       .then(() => {
         var pinColor = "4286f4";
-        var pinImage = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
             new google.maps.Size(21, 34),
             new google.maps.Point(0,0),
             new google.maps.Point(10, 34));
-        var pinShadow = new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
             new google.maps.Size(40, 37),
             new google.maps.Point(0, 0),
             new google.maps.Point(12, 35));
         for (let l of locations) {
           console.log(l)
-          if (haversineDistance(userSpot, l.location) < 5) {
+          if (haversineDistance(userLocation, l.location) < 5) {
             var newMarker = new google.maps.Marker({
               map: map,
               position: l.location,
