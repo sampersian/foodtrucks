@@ -99,6 +99,21 @@ module.exports = {
 		});
 
   },
+  addNewOwner: function(first_name, last_name, username, password, email){
+
+    if (!username || !password) {
+		    return false;
+	  }
+
+    return Owner().insert({
+			first_name: first_name,
+			last_name: last_name,
+		  username: username,
+			password: hashPassword(password),
+      email: email
+		});
+
+  },
   getOneTruck,
 	GetScheduleDay
 }
