@@ -53,17 +53,98 @@ html, body {
   min-width: 400px;
 }
 
-.scheduleDay {
+
+
+/*Truck Profile Css*/
+.truckProfileInfo{
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.7);
+  padding: 20px;
+}
+
+.truckDescription {
+  width: 50vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
-.scheduleDayName {
-  color: white;
+.logoContain{
+  width: 17vw;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.panel, .panel-danger{
+  width: 100% !important;
+  margin-bottom: 0px;
+}
+
+.truckPicture {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.truckPicture .truckProfilePic{
+  max-width: 50vw;
+  max-height: 20vw;
+}
+
+.scheduleInfo {
+  width: 95vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.scheduleInfo .panel {
+  border: 0px;
+}
+
+.schedule{
+  width: 95vw;
+  display: flex;
+  flex-direction: row;
+  padding: 0vw !important;
+}
+
+.scheduleDay {
+  width: calc(100vw / 7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  border-left: 5px solid black;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.scheduleDay:last-child {
+  border-right: 5px solid black;
+}
+
+.scheduleDay .scheduleDayName {
+  color: black;
+  font-weight: bold;
   display: block;
   border-bottom: 2px solid black;
-  margin-bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px 0px;
+}
+
+.scheduleDayInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0px;
 }
 
 .scheduleTime {
@@ -74,48 +155,6 @@ html, body {
 .scheduleLocation {
   display: block;
   color: navy;
-}
-
-/*Truck Profile Css*/
-.profileContain{
-  display: flex;
-  flex-flow: row;
-  padding:1vw;
-}
-
-.truckProfileContain{
-  display: flex;
-  flex-flow: column;
-}
-
-.logoContain{
-  width: 17vw;
-  max-height: 100%;
-  max-width: 100%;
-}
-
-.truckProfilePic{
-  height: 33.75vw;
-  width: 50vw;
-  max-height: 33.75vw;
-  max-width: 50vw;
-}
-
-.panel, .panleDanger{
-  width: 45vw !important;
-  margin-right: 3vw !important;
-}
-
-.schedule{
-  width: auto;
-  display: flex;
-  flex-flow: row;
-  padding: 0vw !important;
-}
-
-.schedule > div{
-  height: 7.5vw;
-  width: 10vw;
 }
 
 .Sunday{
