@@ -1,10 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+// login
 router.get('/', function(req, res, next) {
-
-  res.render('index', { title: 'Food Trucks' });
+  res.render('login');
 });
+
+router.post('/', function (req, res, next) {
+  console.log(req.body);
+  res.render('login')
+})
 
 module.exports = router;
