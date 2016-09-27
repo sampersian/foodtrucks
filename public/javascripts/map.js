@@ -1,6 +1,6 @@
 "use strict"
 
-var userLocation;
+let userSpot;
 function initMap() {
   let lat, lon;
   navigator.geolocation.getCurrentPosition(function (position) {
@@ -13,6 +13,7 @@ function initMap() {
       console.log("Lon: "+typeof position.coords.longitude);
       var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
       let userLocation = myLatLng;
+      userSpot = userLocation;
       // Create a map object and specify the DOM element for display.
       var map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
@@ -44,7 +45,7 @@ function initMap() {
             new google.maps.Point(12, 35));
         for (let l of locations) {
           console.log(l)
-          if (haversineDistance(userLocation, l.location) < 5) {
+          if (haversineDistance(userSpot, l.location) < 5) {
             var newMarker = new google.maps.Marker({
               map: map,
               position: l.location,
