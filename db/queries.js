@@ -1,4 +1,9 @@
 var knex = require('./knex');
+var bcrypt = require('bcrypt');
+
+function hashPassword(password) {
+	return bcrypt.hashSync(password, 10);
+};
 
  function Owner(){
    return knex('owner');
@@ -72,6 +77,22 @@ module.exports = {
   },
   getSingleReview: function(id){
     return Review().where('id', id)
+  },
+  // Add new
+  addNewUser: function(first_name, last_name, username, password, email){
+
+    if (!username || !password) {
+		    return false;
+	  }
+
+    return User().insert({
+			first_name: first_name,
+			last_name: last_name,
+		  username: username,
+			password: hashPassword(password),
+      email: email
+		});
+
   },
   getOneTruck
 }
