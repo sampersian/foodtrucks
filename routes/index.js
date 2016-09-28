@@ -12,13 +12,12 @@ var queries = require('../db/queries.js')
 router.get('/', function(req, res, next) {
   if(!req.user) {
     console.log('router get /login !req.user')
-    res.render('login',{Message: "Login Message: You did not login"});
+    res.render('index',{loggedIn: "yes"});
+
 	}else {
     console.log('router get /login success')
-    res.render('index',{Message: "Login Message: You did login" , loggedIn: "yes"});
+    res.render('login',{Message: "Login Message: You did not login"});
 	}
-
-
   //res.render('index');
 });
 

@@ -6,11 +6,10 @@ var router = express.Router();
 // login
 router.get('/', function(req, res, next) {
 	if(!req.user) {
-    console.log('router get /login !req.user')
-    res.render('login',{Message: "Login Message: You did not login"});
-	}else {
-    console.log('router get /login success')
-    res.render('index',{Message: "Login Message: You did login" , loggedIn: "yes"});
+    res.render('login');
+	}
+  else {
+    res.render('index',{loggedIn: "yes"});
 	}
 });
 
@@ -21,7 +20,5 @@ router.post('/', passport.authenticate('local', {
 	failureFlash: "Incorrect username or password.",
 	successFlash: "Welcome!"
 }));
-
-
 
 module.exports = router;
