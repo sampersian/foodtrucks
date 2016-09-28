@@ -34,7 +34,6 @@
             <div class="form-group">
               <select class="form-control" id="searchMethod">
                 <option value="near">Max Distance (Miles)</option>
-                <option value="location">Location</option>
                 <option value="truckName">Food Truck Name</option>
                 <option value="truckType">Food Type</option>
               </select>
@@ -42,7 +41,7 @@
             <div class="form-group">
               <input type="text" class="form-control" id="searchTerm" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Search</button>
+            <button type="submit" class="btn btn-default" id="search">Search</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
             {{#if loggedIn}}
@@ -57,12 +56,10 @@
 
     {{{body}}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="/javascripts/search.js"></script>
     <script src='/javascripts/main.js'></script>
     <script src='/javascripts/map.js'></script>
-    <script src='/javascripts/pop.js'></script>
-
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC3pdD43USbZV5vRojdGTZ72TCr3b4ovs&callback=initMap"></script>
+    <script src="/javascripts/search.js"></script>
     </main>
   </body>
 </html>
