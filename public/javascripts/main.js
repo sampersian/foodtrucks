@@ -43,8 +43,8 @@ function geoCodeAddress(address, truckObject){
 }
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/truck/info'+id)
+  // $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     let truck_data = data.data;
     $('#selectTruckMessage').hide();
