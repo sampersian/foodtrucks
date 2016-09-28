@@ -92,6 +92,12 @@ function truckSearch() {
   if (method === "near") {
     showAllLocationsWithin(Number(term));
   }
+  else if (method === "truckName") {
+    showTrucksWithName(term);
+  }
+  else if (method === "truckType") {
+    showTrucksWithType(term);
+  }
 }
 
 function showAllLocationsWithin(nMiles) {
@@ -103,6 +109,16 @@ function showAllLocationsWithin(nMiles) {
       addMarker(l)
     }
   }
+}
+
+function showTrucksWithName() {
+  let term = $("#searchTerm").val();
+  console.log('searching for '+term);
+}
+
+function showTrucksWithType() {
+  let term = $("#searchTerm").val();
+  console.log('searching for '+term);
 }
 
 // Adds a marker to the map and push to the array.
