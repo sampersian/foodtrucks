@@ -3,6 +3,23 @@
 var knex = require('./knex');
 var bcrypt = require('bcrypt');
 
+
+function today() {
+  var d = new Date();
+  var n = d.getDay();
+  let days = {
+    0: "sunday",
+    1: "monday",
+    2: "tuesday",
+    3: "wednesday",
+    4: "thursday",
+    5: "friday",
+    6: "saturday"
+  }
+  return days[n];
+}
+
+
 function hashPassword(password) {
 	return bcrypt.hashSync(password, 10);
 };
@@ -35,9 +52,23 @@ function hashPassword(password) {
    return Truck().where('id', id);
  }
 
-  function GetScheduleDay(day) {
-    return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('date', day);
-  }
+function GetScheduleDay(day) {
+  return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('date', day);
+}
+
+ function getOneTruckToday(id) {
+	 return Truck().where('truck.id', id)
+	 .join('schedule', 'truck.id', 'schedule.truck_id')
+	 .select('truck.id as truck_id', 'owner_id', 'truck_name', 'image_url', 'genre', 'description', 'date', 'open_time', 'close_time')
+	 .where('date', today());
+ }
+
+
+function GetScheduleDay() {
+  return knex('schedule')
+	.join('truck', 'truck.id', 'schedule.truck_id')
+	.where('date', today());
+}
 
 module.exports = {
   // Get All
@@ -120,5 +151,6 @@ module.exports = {
 
   },
   getOneTruck,
+	getOneTruckToday,
 	GetScheduleDay
 }
