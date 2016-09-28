@@ -10,7 +10,16 @@ var queries = require('../db/queries.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  if(!req.user) {
+    console.log('router get /login !req.user')
+    res.render('login',{Message: "Login Message: You did not login"});
+	}else {
+    console.log('router get /login success')
+    res.render('index',{Message: "Login Message: You did login" , loggedIn: "yes"});
+	}
+
+
+  //res.render('index');
 });
 
 router.get('/today/locations', function (req, res, next) {
@@ -19,7 +28,7 @@ router.get('/today/locations', function (req, res, next) {
     res.send(data);
   })
 })
-// 
+//
 // router.get('/results/truck/:term', function(req, res, next) {
 //   console.log('results');
 //   queries.getTrucksByName('term')

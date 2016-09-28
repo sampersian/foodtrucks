@@ -10,13 +10,13 @@ router.get('/', function(req, res, next) {
     res.render('login',{Message: "Login Message: You did not login"});
 	}else {
     console.log('router get /login success')
-    res.render('login',{Message: "Login Message: You did login" /*, loggedIn: "yes"*/});
+    res.render('index',{Message: "Login Message: You did login" , loggedIn: "yes"});
 	}
 });
 
 
 router.post('/', passport.authenticate('local', {
-	successRedirect: '/login', //change back to /
+	successRedirect: '/',
 	failureRedirect: '/login',
 	failureFlash: "Incorrect username or password.",
 	successFlash: "Welcome!"
