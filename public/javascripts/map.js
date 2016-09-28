@@ -19,7 +19,7 @@ function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 12
+        zoom: 15
       });
 
       var marker = new google.maps.Marker({
@@ -27,8 +27,8 @@ function initMap() {
         position: myLatLng,
         title: 'You are here!'
       });
-      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      $.get('http://localhost:3000/today/locations')
+      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      // $.get('http://localhost:3000/today/locations')
       .then((data) => {
         console.log(data);
         for (d of data) {
