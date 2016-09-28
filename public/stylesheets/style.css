@@ -173,7 +173,7 @@ html, body {
 }
 
 .truckName {
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   color: black;
   text-align: center;
 }

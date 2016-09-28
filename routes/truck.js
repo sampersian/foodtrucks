@@ -57,9 +57,14 @@ router.get('/:id', function(req,res,next) {
         data[search].close_time=makeTimeNeat(data[search].close_time);
       }
     }
-    res.render('truck', {
+  return queries.GetTruckReviews(req.params.id)
+  .then(function(reviews){
+      data.reviews=reviews,
+      console.log(data)
+      res.render('truck', {
         truck: data,
-    });
+      });
+    })
   })
 })
 
