@@ -3,6 +3,7 @@ var Local = require('passport-local').Strategy;
 var query = require('./db/queries');
 var bcrypt = require('bcrypt');
 
+
 passport.use(new Local(
 	function(username, password, done) {
 		query.getSingleUserByUsername(username)
@@ -10,7 +11,7 @@ passport.use(new Local(
 
 			let user = users[0];
 
-			if(bcrypt.compareSync(password, user.password_hash)){
+			if(bcrypt.compareSync(password, user.password)){
 
 				done(null, user); // If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
 
@@ -37,7 +38,7 @@ passport.deserializeUser(function(username, done) {
 	query.getSingleUserByUsername(username)
 	.then(function(data){
 		console.log('c');
-		let user = data[0];
+		let user = data[0].username;
 		done(null, user);
 	})
 	.catch(function(err) {

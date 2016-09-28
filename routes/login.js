@@ -13,11 +13,14 @@ router.get('/', function(req, res, next) {
 	}
 });
 
+
 router.post('/', passport.authenticate('local', {
 	successRedirect: '/',
 	failureRedirect: '/login',
 	failureFlash: "Incorrect username or password.",
 	successFlash: "Welcome!"
 }));
+
+
 
 module.exports = router;

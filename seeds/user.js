@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         // Inserts seed entries
         knex('user').insert({
-          id: 1,
           first_name:'Maia',
           last_name:'Samuel',
           username:'maia',
@@ -15,7 +14,6 @@ exports.seed = function(knex, Promise) {
           image_url:'https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/14117734_1133960686678752_920891216877506960_n.jpg?oh=9566e9dafb88639b85dbfdc41dcc2ff1&oe=58811480'
         }),
         knex('user').insert({
-          id: 2,
           first_name:'Bartholomew',
           last_name:'Krystman',
           username:'hipster',
