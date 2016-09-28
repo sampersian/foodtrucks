@@ -9,8 +9,9 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/results/truck/:term', function(req, res, next) {
+  console.log('results');
   queries.getTrucksByName('term')
-  .then(function(trucks){
+  .then(function(trucks) {
     res.redirect('results', {
       trucks: trucks
     })
