@@ -19,15 +19,6 @@ router.get('/today/locations', function (req, res, next) {
     res.send(data);
   })
 })
-// 
-// router.get('/results/truck/:term', function(req, res, next) {
-//   console.log('results');
-//   queries.getTrucksByName('term')
-//   .then(function(trucks) {
-//     res.redirect('results', {
-//       trucks: trucks
-//     })
-//   })
-// })
+
 
 module.exports = router;
