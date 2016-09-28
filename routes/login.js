@@ -13,12 +13,11 @@ router.get('/', function(req, res, next) {
 	}
 });
 
-router.post('/',
-  passport.authenticate('local'),
-  function(req, res) {
-    // If this function gets called, authentication was successful.
-    // `req.user` contains the authenticated user.
-    res.redirect('/users/' + req.user.username);
-  });
+router.post('/', passport.authenticate('local', {
+	successRedirect: '/',
+	failureRedirect: '/login',
+	failureFlash: "Incorrect username or password.",
+	successFlash: "Welcome!"
+}));
 
 module.exports = router;

@@ -28,16 +28,20 @@ passport.use(new Local(
 ));
 
 passport.serializeUser(function(user, done) {
+	console.log('a');
 	done(null, user.username);
 });
 
 passport.deserializeUser(function(username, done) {
+	console.log('b');
 	query.getSingleUserByUsername(username)
 	.then(function(data){
+		console.log('c');
 		let user = data[0];
 		done(null, user);
 	})
 	.catch(function(err) {
+		console.log('d');
 		return next(err);
 	})
 
