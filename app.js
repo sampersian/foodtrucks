@@ -46,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', routes);
+app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.all('*',function(req,res,next){
@@ -57,7 +58,6 @@ app.all('*',function(req,res,next){
     }
 });
 app.use('/owner', owner);
-app.use('/signup', signup);
 app.use('/truck', truck);
 app.use('/users', users);
 app.use('/events', events);
