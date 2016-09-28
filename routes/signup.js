@@ -11,23 +11,22 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-  //console.log(req.body);
-  //res.render('signup')
-  if(req.body.userSignupPassword != req.body.userSignupPassword2){
-    console.log('passwords do not match');
-		res.render("signup")
-	}
-
-  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail)
-	.then(function(data) {
-    console.log('User added to database');
-		res.redirect('/')
-	})
-	.catch(function(err){
-    console.log('User signup fail');
-		return next(err)
-	})
+  if(req.body.userSignupPassword === req.body.userSignupPassword2){
+    queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
+      if(req.body.userSignupUsername===data[0].username){
+        res.send('Error Please Use A Different Username');
+      }
+    }).catch(function(){
+      next();
+    })
+  }
 })
+
+router.post('/', function (req, res, next) {
+  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail).then(function(data){
+    res.redirect('/');
+  })
+});
 
 
 

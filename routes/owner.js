@@ -25,9 +25,8 @@ router.post('/signup', function (req, res, next) {
 
 router.post('/signup', function (req, res, next) {
   queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, req.body.ownerSignupUsername, req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
-    res.return
+    res.redirect('/');
   })
-
 });
 
 
