@@ -3,18 +3,18 @@
 
   <div class='truckProfileInfo'>
     <div class="truckDescription">
-      <h1 class="truckName">{{truck.truck_name}}</h1>
+      <h1 class="truckName">{{truck.0.truck_name}}</h1>
       <div class='panel panel-danger'>
         <div class='panel-heading'>
-          <h3 class='panel-title' id="truckName">{{truck.genre}}</h3>
+          <h3 class='panel-title' id="truckName">{{truck.0.genre}}</h3>
         </div>
         <div class='panel-body' id="truckDescriptionBody">
-          {{truck.description}}
+          {{truck.0.description}}
         </div>
       </div>
     </div>
     <div class="truckPicture">
-      <img class='truckProfilePic' src='{{truck.image_url}}'/>
+      <img class='truckProfilePic' src='{{truck.0.image_url}}'/>
     </div>
   </div>
 
@@ -24,50 +24,50 @@
         <div class='scheduleDay'>
           <span class='scheduleDayName Sunday'>Sunday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.0.location}}</span>
+            <span class='scheduleTime'>{{truck.0.open_time}} - {{truck.0.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Monday'>Monday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.1.location}}</span>
+            <span class='scheduleTime'>{{truck.1.open_time}} - {{truck.1.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Tuesday'>Tuesday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.2.location}}</span>
+            <span class='scheduleTime'>{{truck.2.open_time}} - {{truck.2.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Wednesday'>Wednesday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.3.location}}</span>
+            <span class='scheduleTime'>{{truck.3.open_time}} - {{truck.3.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Thursday'>Thursday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.4.location}}</span>
+            <span class='scheduleTime'>{{truck.4.open_time}} - {{truck.4.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Friday'>Friday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.5.location}}</span>
+            <span class='scheduleTime'>{{truck.5.open_time}} - {{truck.5.close_time}}</span>
           </div>
         </div>
         <div class='scheduleDay'>
           <span class='scheduleDayName Saturday'>Saturday</span>
           <div class="scheduleDayInfo">
-            <span class='scheduleLocation'>{{location}}</span>
-            <span class='scheduleTime'>{{open_time}} - {{close_time}}</span>
+            <span class='scheduleLocation'>{{truck.6.location}}</span>
+            <span class='scheduleTime'>{{truck.6.open_time}} - {{truck.6.close_time}}</span>
           </div>
         </div>
       </div>

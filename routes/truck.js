@@ -14,11 +14,9 @@ router.post('/new', function (req, res, next) {
 })
 
 router.get('/:id', function(req,res,next) {
-  return queries.getOneTruck(req.params.id)
+  return queries.getScheduleTruck(req.params.id)
   .then((data) => {
-    console.log(data);
-
-    res.render('truck', {truck: data[0]});
+    res.render('truck', {truck: data});
   })
 })
 
