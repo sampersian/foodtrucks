@@ -23,4 +23,11 @@ router.get('/:id', function(req,res,next) {
   })
 })
 
+router.get('/info/:id', function (req, res, next) {
+  return queries.getOneTruckToday(req.params.id)
+  .then((truck_data) => {
+    res.send({data: truck_data[0]});
+  })
+})
+
 module.exports = router;

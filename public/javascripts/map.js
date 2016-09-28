@@ -1,6 +1,7 @@
 "use strict"
 
-let userLocation;
+let userLocation, map;
+let markersArray = [];
 function initMap() {
   let lat, lon;
   navigator.geolocation.getCurrentPosition(function (position) {
@@ -15,7 +16,7 @@ function initMap() {
       var myLatLng = {lat: position.coords.latitude, lng: position.coords.longitude};
       userLocation = myLatLng;
       // Create a map object and specify the DOM element for display.
-      var map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
         zoom: 12
@@ -34,30 +35,9 @@ function initMap() {
         }
       })
       .then(() => {
-        var pinColor = "4286f4";
-        var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-            new google.maps.Size(21, 34),
-            new google.maps.Point(0,0),
-            new google.maps.Point(10, 34));
-        var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-            new google.maps.Size(40, 37),
-            new google.maps.Point(0, 0),
-            new google.maps.Point(12, 35));
-        for (let l of locations) {
-          console.log(l)
-          if (haversineDistance(userLocation, l.location) < 5) {
-            var newMarker = new google.maps.Marker({
-              map: map,
-              position: l.location,
-              title: l.truck_name,
-              icon: pinImage,
-              shadow: pinShadow
-            });
-          }
-        }
+        showAllLocationsWithin(5);
       })
   })
-
 }
 
 
