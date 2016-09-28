@@ -41,3 +41,119 @@ function geoCodeAddress(address, truckObject){
     }
   })
 }
+
+function loadTruckInfo(id) {
+  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info'+id)
+  $.get('http://localhost:3000/truck/info/'+id)
+  .then((data) => {
+    let truck_data = data.data;
+    $('#selectTruckMessage').hide();
+    $('.truckSnapshotName').text(truck_data.truck_name)
+    $('.truckSnapshotOpen').text(makeTimeNeat(truck_data.open_time))
+    $('.truckSnapshotClose').text(makeTimeNeat(truck_data.close_time))
+    $('.truckSnapshotImage').attr('src', truck_data.image_url)
+    $('.truckSnapshotLink').attr('href', "/truck/"+id)
+    $('.truckSnapshot').css('display', 'flex');
+  })
+}
+
+function makeTimeNeat(time) {
+  let stringTime = String(time);
+  let hours, minutes, ampm;
+  if (stringTime.length === 3) {
+    hours = stringTime.substring(0,1);
+    minutes = stringTime.substring(1,3);
+  } else {
+    hours = stringTime.substring(0,2);
+    minutes = stringTime.substring(2,4);
+  }
+  if (hours > 12) {
+    ampm = "PM";
+    hours -= 12;
+  } else if (hours === 12) {
+    ampm = "PM";
+  } else {
+    ampm = "AM"
+  }
+  let newStringTime = hours+":"+minutes+" "+ampm;
+  return newStringTime;
+}
+
+function showAllLocations() {
+  for (let l of locations) {
+    addMarker(l)
+  }
+}
+
+function truckSearch() {
+  console.log("Searching");
+  let method = $('#searchMethod').val();
+  let term = $('#searchTerm').val();
+  if (method === "near") {
+    showAllLocationsWithin(Number(term));
+  }
+}
+
+function showAllLocationsWithin(nMiles) {
+  console.log("deleting markers");
+  deleteMarkers();
+  console.log("showing markers within "+nMiles+" miles");
+  for (let l of locations) {
+    if (haversineDistance(userLocation, l.location) < nMiles) {
+      addMarker(l)
+    }
+  }
+}
+
+// Adds a marker to the map and push to the array.
+function addMarker(l) {
+  var pinColor = "4286f4";
+  var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0,0),
+      new google.maps.Point(10, 34));
+  var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+      new google.maps.Size(40, 37),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(12, 35));
+  var newMarker = new google.maps.Marker({
+    map: map,
+    position: l.location,
+    title: l.truck_name,
+    truck_id: l.truck_id,
+    icon: pinImage,
+    shadow: pinShadow
+  });
+  google.maps.event.addDomListener(newMarker, 'click', function() {
+    loadTruckInfo(newMarker.truck_id)
+  });
+  markersArray.push(newMarker);
+}
+
+// Removes the overlays from the map, but keeps them in the array
+function hideMarkers() {
+  if (markersArray) {
+    for (let i in markersArray) {
+      markersArray[i].setMap(null);
+    }
+  }
+}
+
+// Shows any overlays currently in the array
+function showMarkers() {
+  if (markersArray) {
+    for (let i in markersArray) {
+      markersArray[i].setMap(map);
+    }
+  }
+}
+
+// Deletes all markers in the array by removing references to them
+function deleteMarkers() {
+  if (markersArray) {
+    for (let i in markersArray) {
+      markersArray[i].setMap(null);
+    }
+    markersArray.length = 0;
+  }
+}
