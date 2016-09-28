@@ -1,15 +1,15 @@
 "use strict"
 var passport = require('../passport')
-
 var express = require('express');
 var router = express.Router();
 
 // login
 router.get('/', function(req, res, next) {
-  if(req.user) {
-		res.redirect('http://www.google.com');
+	if(req.user) {
+    console.log('Login was successful');
+		res.redirect('/');
 	}else {
-		res.render('login', {flash: req.flash()});
+		res.render('login',{Message: "Login Message: You did not login"});
 	}
 });
 
