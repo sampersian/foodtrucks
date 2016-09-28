@@ -39,7 +39,7 @@ html, body {
 }
 
 .mainTruck {
-  width: 69vw;
+  width: 65vw;
   min-width: 400px;
   min-height: 200px;
   text-align: center;
@@ -51,7 +51,7 @@ html, body {
 }
 
 .mainReview {
-  width: 29vw;
+  width: 25vw;
   min-width: 400px;
   min-height: 200px;
   text-align: center;

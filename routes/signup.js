@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var queries = require('../db/queries');
+//var swal = require('sweetalert');
 
 
 // signup
@@ -12,18 +13,25 @@ router.get('/', function (req, res, next) {
 
 router.post('/', function (req, res, next) {
   if(req.body.userSignupPassword === req.body.userSignupPassword2){
+    console.log('Password match');
     queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
       if(req.body.userSignupUsername===data[0].username){
-        res.send('Error Please Use A Different Username');
+        console.log('Username not avaliable for User Account Creation');
+        res.redirect('/');
       }
     }).catch(function(){
       next();
     })
   }
+  else {
+    console.log('Passwords do not match for User Account Creation');
+    res.redirect('/signup');
+  }
 })
 
 router.post('/', function (req, res, next) {
   queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail).then(function(data){
+    console.log('A new account was created successfully for User Account')
     res.redirect('/');
   })
 });
