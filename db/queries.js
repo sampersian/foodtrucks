@@ -59,6 +59,9 @@ function hashPassword(password) {
 	 .where('date', today());
  }
 
+function GetTruckReviews(id) {
+  return Review().where('truck_id', id);
+}
 
 function GetScheduleDay() {
   return knex('schedule')
@@ -121,6 +124,9 @@ module.exports = {
 	getScheduleTruck: function(id) {
 		return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('truck_id', id);
 	},
+	// getUserReview: function(id) {
+	// 	return knex('review').join('user', 'user.id', 'review.user_id').where('user_id', id);
+	// },
   // Add new
   addNewUser: function(first_name, last_name, username, password, email){
 
@@ -154,5 +160,6 @@ module.exports = {
   },
   getOneTruck,
 	getOneTruckToday,
-	GetScheduleDay
+	GetScheduleDay,
+  GetTruckReviews
 }
