@@ -15,7 +15,10 @@ html, body {
 #map {
   width: 100%;
   height: 400px;
-  background-color: grey;
+  background-color: white;
+  background-image: url("https://pbs.twimg.com/media/Ctd9zlEVYAA3Z75.jpg:large");
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .myJumbo {
@@ -36,6 +39,7 @@ html, body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
+
 }
 
 .mainTruck {
@@ -43,7 +47,7 @@ html, body {
   min-width: 400px;
   min-height: 200px;
   text-align: center;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +59,7 @@ html, body {
   min-width: 400px;
   min-height: 200px;
   text-align: center;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -126,7 +130,7 @@ html, body {
   min-width: 400px;
   display: none;
   font-size: 1.2em;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
   padding: 5px 20px 10px 20px;
 }
 
@@ -142,7 +146,7 @@ html, body {
   height: 100%;
   min-width: 400px;
   font-size: 1.2em;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
   padding: 5px 20px 10px 20px;
 }
 
@@ -222,7 +226,7 @@ html, body {
   border-top: 5px solid black;
   border-bottom: 5px solid black;
   border-left: 5px solid black;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
 }
 
 .scheduleDay:last-child {
@@ -314,6 +318,6 @@ html, body {
   height: 100%;
   min-width: 400px;
   font-size: 1.2em;
-  background-color: rgba(0,0,0,0.5);
+  background-color: silver;
   padding: 5px 20px 10px 20px;
 }

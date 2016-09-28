@@ -18,7 +18,7 @@ function showForm(aForm) {
   let formName = aForm+"SignupForm";
   $('.'+formName).show()
 }
-let d;
+
 function geoCoder(address){
      var formattedAddress = address.split(' ').join('+');
   $.ajax({
@@ -44,11 +44,10 @@ function geoCodeAddress(address, truckObject){
     }
   })
 }
-let ddd;
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  // $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
@@ -142,20 +141,19 @@ function showAllLocationsWithin(nMiles) {
 
 function showTrucksWithName() {
   deleteMarkers();
-  let term = $("#searchTerm").val();
+  let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
-    if (l.truck_name == term) {
+    if (l.truck_name.toLowerCase().includes(term)) {
       addMarker(l)
-      console.log(l);
     }
   }
 }
 
 function showTrucksWithType() {
   deleteMarkers();
-  let term = $("#searchTerm").val();
+  let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
-    if (l.genre == term) {
+    if (l.genre.toLowerCase().includes(term)) {
       addMarker(l)
     }
   }
