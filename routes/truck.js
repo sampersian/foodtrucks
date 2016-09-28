@@ -17,7 +17,7 @@ router.get('/:id', function(req,res,next) {
   return queries.getOneTruck(req.params.id)
   .then((data) => {
     console.log(data);
-    
+
     res.render('truck', {truck: data[0]});
   })
 })
