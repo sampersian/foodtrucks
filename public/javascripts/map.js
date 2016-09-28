@@ -27,12 +27,27 @@ function initMap() {
       //   position: myLatLng,
       //   title: 'You are here!'
       // });
-      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      // $.get('http://localhost:3000/today/locations')
+      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      $.get('http://localhost:3000/today/locations')
       .then((data) => {
+        // let calls = [];
+      	// for (let i =0; i< 10; i++ ){
+      	// 	calls.push(caller())
+      	// }
+      	// return Promise.all(calls)
+        let promises = [];
         for (let d of data) {
-          geoCodeAddress(d.location, d);
+          promises.push(geoCodeAddress(d.location, d));
         }
+        return Promise.all(promises)
+      })
+      .then((data) => {
+        console.log(data);
+        // success: function(data){
+        //   truckObject.location = data.results[0].geometry.location
+        //   locations.push(truckObject)
+        //   return data.results[0].geometry.location;
+        // }
       })
       .then(() => {
         showAllLocationsWithin(5);

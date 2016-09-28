@@ -31,23 +31,18 @@ function geoCoder(address){
     }
   })
 }
-function geoCodeAddress(address, truckObject){
+function geoCodeAddress(address){
      var formattedAddress = address.split(' ').join('+');
-  $.ajax({
+  return $.ajax({
     url:'https://maps.googleapis.com/maps/api/geocode/json?address='+formattedAddress+'&key=AIzaSyAMCg6786tQQUE9PoC4RNbsRswkyRqBbVg',
     error: function(err) {console.error(err)},
-    method: 'GET',
-    success: function(data){
-      truckObject.location = data.results[0].geometry.location
-      locations.push(truckObject)
-      return data.results[0].geometry.location;
-    }
+    method: 'GET'
   })
 }
 
 function loadTruckInfo(id) {
-  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  // $.get('http://localhost:3000/truck/info/'+id)
+  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
