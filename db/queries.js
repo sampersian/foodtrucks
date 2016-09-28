@@ -102,6 +102,12 @@ module.exports = {
   getSingleUser: function(id){
     return User().where('id', id);
   },
+	getSingleUserByUsername: function(username){
+		return User().where('username',username);
+	},
+	getSingleOwnerByUsername: function(username){
+		return Owner().where('username',username);
+	},
   getSingleSchedule: function(id){
     return Schedule().where('id', id)
   },
