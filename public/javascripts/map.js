@@ -30,7 +30,7 @@ function initMap() {
       $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
       // $.get('http://localhost:3000/today/locations')
       .then((data) => {
-        for (d of data) {
+        for (let d of data) {
           geoCodeAddress(d.location, d);
         }
       })
