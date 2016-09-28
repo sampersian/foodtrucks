@@ -22,15 +22,14 @@ function initMap() {
         zoom: 12
       });
 
-      var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'You are here!'
-      });
-      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      $.get('http://localhost:3000/today/locations')
+      // var marker = new google.maps.Marker({
+      //   map: map,
+      //   position: myLatLng,
+      //   title: 'You are here!'
+      // });
+      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      // $.get('http://localhost:3000/today/locations')
       .then((data) => {
-        console.log(data);
         for (d of data) {
           geoCodeAddress(d.location, d);
         }

@@ -59,6 +59,9 @@ function hashPassword(password) {
 	 .where('date', today());
  }
 
+function GetTruckReviews(id) {
+  return Review().where('truck_id', id);
+}
 
 function GetScheduleDay() {
   return knex('schedule')
@@ -160,5 +163,6 @@ module.exports = {
   },
   getOneTruck,
 	getOneTruckToday,
-	GetScheduleDay
+	GetScheduleDay,
+  GetTruckReviews
 }

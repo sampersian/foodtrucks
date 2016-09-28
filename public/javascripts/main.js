@@ -2,6 +2,9 @@
 
 let specified;
 let locations = [];
+let numberReviews = 0;
+let truckReviewCurrent = 0;
+let truckReviews = {};
 $(document).ready(function() {
   if (specified) {
     showForm(specified);
@@ -41,20 +44,46 @@ function geoCodeAddress(address, truckObject){
     }
   })
 }
+let ddd;
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  // $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
+    console.log(data)
     let truck_data = data.data;
-    $('#selectTruckMessage').hide();
+    let review_data = truck_data.reviews;
+    $('.selectTruckMessage').hide();
     $('.truckSnapshotName').text(truck_data.truck_name)
     $('.truckSnapshotOpen').text(makeTimeNeat(truck_data.open_time))
     $('.truckSnapshotClose').text(makeTimeNeat(truck_data.close_time))
     $('.truckSnapshotImage').attr('src', truck_data.image_url)
     $('.truckSnapshotLink').attr('href', "/truck/"+id)
     $('.truckSnapshot').css('display', 'flex');
+    $('.reviewSnapshotContent').show();
+    $('.reviewSnapshotMover').show();
+    truckReviewCurrent = 0;
+    truckReviews = {};
+    numberReviews = review_data.length;
+    for (let r in review_data) {
+      truckReviews[r] = review_data[r]
+    }
+    showTruckReview();
   })
+}
+
+function showTruckReview() {
+  $('.reviewSnapshotContent').text(truckReviews[truckReviewCurrent].content);
+}
+
+function nextReview() {
+  let nextNumber = truckReviewCurrent + 1;
+  if (nextNumber >= numberReviews) {
+    truckReviewCurrent = 0;
+  } else {
+    truckReviewCurrent = nextNumber;
+  }
+  showTruckReview();
 }
 
 function makeTimeNeat(time) {
@@ -124,22 +153,28 @@ function showTrucksWithType() {
 
 // Adds a marker to the map and push to the array.
 function addMarker(l) {
-  var pinColor = "4286f4";
-  var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-      new google.maps.Size(21, 34),
-      new google.maps.Point(0,0),
-      new google.maps.Point(10, 34));
-  var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-      new google.maps.Size(40, 37),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(12, 35));
+  // var pinColor = "4286f4";
+  // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+  //     new google.maps.Size(21, 34),
+  //     new google.maps.Point(0,0),
+  //     new google.maps.Point(10, 34));
+  // var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+  //     new google.maps.Size(40, 37),
+  //     new google.maps.Point(0, 0),
+  //     new google.maps.Point(12, 35));
+  // var newMarker = new google.maps.Marker({
+  //   map: map,
+  //   position: l.location,
+  //   title: l.truck_name,
+  //   truck_id: l.truck_id,
+  //   icon: pinImage,
+  //   shadow: pinShadow
+  // });
   var newMarker = new google.maps.Marker({
     map: map,
     position: l.location,
     title: l.truck_name,
-    truck_id: l.truck_id,
-    icon: pinImage,
-    shadow: pinShadow
+    truck_id: l.truck_id
   });
   google.maps.event.addDomListener(newMarker, 'click', function() {
     loadTruckInfo(newMarker.truck_id)
