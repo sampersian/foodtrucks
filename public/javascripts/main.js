@@ -42,18 +42,17 @@ function geoCodeAddress(address, truckObject){
   })
 }
 
-let t;
 function loadTruckInfo(id) {
   // $.get('https://hipfoodtrucks.herokuapp.com/truck/info'+id)
   $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     let truck_data = data.data;
-    t = truck_data;
     $('#selectTruckMessage').hide();
     $('.truckSnapshotName').text(truck_data.truck_name)
     $('.truckSnapshotOpen').text(makeTimeNeat(truck_data.open_time))
     $('.truckSnapshotClose').text(makeTimeNeat(truck_data.close_time))
     $('.truckSnapshotImage').attr('src', truck_data.image_url)
+    $('.truckSnapshotLink').attr('href', "/truck/"+id)
     $('.truckSnapshot').css('display', 'flex');
   })
 }
@@ -86,7 +85,17 @@ function showAllLocations() {
   }
 }
 
+function truckSearch() {
+  console.log("Searching");
+  let method = $('#searchMethod').val();
+  let term = $('#searchTerm').val();
+  if (method === "near") {
+    showAllLocationsWithin(Number(term));
+  }
+}
+
 function showAllLocationsWithin(nMiles) {
+  deleteMarkers();
   for (let l of locations) {
     if (haversineDistance(userLocation, l.location) < nMiles) {
       addMarker(l)

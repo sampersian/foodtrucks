@@ -30,17 +30,19 @@
               </div>
             </li>
           </ul>
-          <form class="navbar-form navbar-left"role="search" id="search">
-            <label>Select By </label>
-            <select class="form-control" id="select">
-              <option>Location</option>
-              <option>Food Truck Name</option>
-              <option>Food Type</option>
-            </select>
+          <form class="navbar-form navbar-left searchForm" role="search" id="search">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <select class="form-control" id="searchMethod">
+                <option value="near">Max Distance (Miles)</option>
+                <option>Location</option>
+                <option>Food Truck Name</option>
+                <option>Food Type</option>
+              </select>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
+            <div class="form-group">
+              <input type="text" class="form-control" id="searchTerm" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
             {{#if loggedIn}}
