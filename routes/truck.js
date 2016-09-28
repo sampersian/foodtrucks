@@ -65,10 +65,14 @@ router.get('/:id', function(req,res,next) {
 
 router.get('/info/:id', function (req, res, next) {
   return queries.getOneTruckToday(req.params.id)
-  .then((truck_data) => {
-    res.send({data: truck_data[0]});
+  .then((data) => {
+    let truck_data = data[0];
+    return queries.GetTruckReviews(req.params.id)
+    .then((review_data) => {
+      truck_data.reviews = review_data;
+      res.send({data: truck_data});
+    })
   })
 })
 
 module.exports = router;
-// https://galvanize-ps.roomzilla.net/rooms/banana-room-lower-level/reservations/5262977/edit

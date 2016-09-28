@@ -2,6 +2,9 @@
 
 let specified;
 let locations = [];
+let numberReviews = 0;
+let truckReviewCurrent = 0;
+let truckReviews = {};
 $(document).ready(function() {
   if (specified) {
     showForm(specified);
@@ -41,6 +44,7 @@ function geoCodeAddress(address, truckObject){
     }
   })
 }
+let ddd;
 
 function loadTruckInfo(id) {
   $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
@@ -48,14 +52,38 @@ function loadTruckInfo(id) {
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
-    $('#selectTruckMessage').hide();
+    let review_data = truck_data.reviews;
+    $('.selectTruckMessage').hide();
     $('.truckSnapshotName').text(truck_data.truck_name)
     $('.truckSnapshotOpen').text(makeTimeNeat(truck_data.open_time))
     $('.truckSnapshotClose').text(makeTimeNeat(truck_data.close_time))
     $('.truckSnapshotImage').attr('src', truck_data.image_url)
     $('.truckSnapshotLink').attr('href', "/truck/"+id)
     $('.truckSnapshot').css('display', 'flex');
+    $('.reviewSnapshotContent').show();
+    $('.reviewSnapshotMover').show();
+    truckReviewCurrent = 0;
+    truckReviews = {};
+    numberReviews = review_data.length;
+    for (let r in review_data) {
+      truckReviews[r] = review_data[r]
+    }
+    showTruckReview();
   })
+}
+
+function showTruckReview() {
+  $('.reviewSnapshotContent').text(truckReviews[truckReviewCurrent].content);
+}
+
+function nextReview() {
+  let nextNumber = truckReviewCurrent + 1;
+  if (nextNumber >= numberReviews) {
+    truckReviewCurrent = 0;
+  } else {
+    truckReviewCurrent = nextNumber;
+  }
+  showTruckReview();
 }
 
 function makeTimeNeat(time) {
