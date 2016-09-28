@@ -21,7 +21,6 @@ function initMap() {
         scrollwheel: false,
         zoom: 10
       });
-
       // var marker = new google.maps.Marker({
       //   map: map,
       //   position: myLatLng,
