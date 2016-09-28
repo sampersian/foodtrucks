@@ -107,22 +107,28 @@ function showAllLocationsWithin(nMiles) {
 
 // Adds a marker to the map and push to the array.
 function addMarker(l) {
-  var pinColor = "4286f4";
-  var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-      new google.maps.Size(21, 34),
-      new google.maps.Point(0,0),
-      new google.maps.Point(10, 34));
-  var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-      new google.maps.Size(40, 37),
-      new google.maps.Point(0, 0),
-      new google.maps.Point(12, 35));
+  // var pinColor = "4286f4";
+  // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+  //     new google.maps.Size(21, 34),
+  //     new google.maps.Point(0,0),
+  //     new google.maps.Point(10, 34));
+  // var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
+  //     new google.maps.Size(40, 37),
+  //     new google.maps.Point(0, 0),
+  //     new google.maps.Point(12, 35));
+  // var newMarker = new google.maps.Marker({
+  //   map: map,
+  //   position: l.location,
+  //   title: l.truck_name,
+  //   truck_id: l.truck_id,
+  //   icon: pinImage,
+  //   shadow: pinShadow
+  // });
   var newMarker = new google.maps.Marker({
     map: map,
     position: l.location,
     title: l.truck_name,
-    truck_id: l.truck_id,
-    icon: pinImage,
-    shadow: pinShadow
+    truck_id: l.truck_id
   });
   google.maps.event.addDomListener(newMarker, 'click', function() {
     loadTruckInfo(newMarker.truck_id)
