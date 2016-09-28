@@ -1,5 +1,11 @@
 "use strict"
 
+if (process.env === "production") {
+  let site = "https://hipfoodtrucks.herokuapp.com/truck/info/"
+} else {
+  let site = "http://localhost:3000/truck/info/"
+}
+
 let specified;
 let locations = [];
 let numberReviews = 0;
@@ -46,8 +52,7 @@ function geoCodeAddress(address, truckObject){
 }
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get(site+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;

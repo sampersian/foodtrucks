@@ -1,5 +1,11 @@
 "use strict"
 
+if (process.env === "production") {
+  let site = "https://hipfoodtrucks.herokuapp.com/"
+} else {
+  let site = "http://localhost:3000/"
+}
+
 let userSpot;
 let userLocation, map;
 let markersArray = [];
@@ -26,8 +32,7 @@ function initMap() {
       //   position: myLatLng,
       //   title: 'You are here!'
       // });
-      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      // $.get('http://localhost:3000/today/locations')
+      $.get(site+'today/locations')
       .then((data) => {
         for (let d of data) {
           geoCodeAddress(d.location, d);
