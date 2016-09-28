@@ -49,9 +49,8 @@ app.use('/', routes);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
-app.all('*',function(req,res,next){
+app.use(function(req,res,next){
     if(req.user){
-      res.render('index',{Message: "Login Message: You did login" , loggedIn: "yes"});
       next();
     }else{
         next(new Error(401)); // 401 Not Authorized
