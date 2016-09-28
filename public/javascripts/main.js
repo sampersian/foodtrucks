@@ -142,20 +142,19 @@ function showAllLocationsWithin(nMiles) {
 
 function showTrucksWithName() {
   deleteMarkers();
-  let term = $("#searchTerm").val();
+  let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
-    if (l.truck_name == term) {
+    if (l.truck_name.toLowerCase().includes(term)) {
       addMarker(l)
-      console.log(l);
     }
   }
 }
 
 function showTrucksWithType() {
   deleteMarkers();
-  let term = $("#searchTerm").val();
+  let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
-    if (l.genre == term) {
+    if (l.genre.toLowerCase().includes(term)) {
       addMarker(l)
     }
   }
