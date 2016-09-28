@@ -113,7 +113,8 @@ function showAllLocationsWithin(nMiles) {
 
 function showTrucksWithName() {
   let term = $("#searchTerm").val();
-  console.log('searching for '+term);
+  var url = 'results/truck/'+term;
+  window.location = url
 }
 
 function showTrucksWithType() {

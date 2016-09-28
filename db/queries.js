@@ -66,6 +66,8 @@ function GetScheduleDay() {
 	.where('date', today());
 }
 
+
+
 module.exports = {
   // Get All
   getAllOwners: function(){
@@ -116,6 +118,10 @@ module.exports = {
   },
   getSingleReview: function(id){
     return Review().where('id', id)
+  },
+  // Search Call
+  getTrucksByName: function(term){
+    return Truck().where('truck_name', term);
   },
 	// Get join
 	getScheduleTruck: function(id) {
