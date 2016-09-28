@@ -18,7 +18,7 @@ router.post('/signup', function (req, res, next) {
         res.send('Error Please Use A Different Username');
       }
     }).catch(function(){
-      next();
+      next(); // If then returns error
     })
   }
 })

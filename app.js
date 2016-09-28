@@ -6,6 +6,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('./passport')
+var flash = require('connect-flash');
 
 var routes = require('./routes/index');
 var login = require('./routes/login');
@@ -28,7 +31,18 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+// required for passport
+app.use(session({
+	secret: 'keyboard cat',
+	saveUninitialized: true,
+	resave: false
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session. This is the connect-flash way of getting flashdata in the session.
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', routes);
 app.use('/login', login);

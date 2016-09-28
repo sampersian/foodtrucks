@@ -1,0 +1,48 @@
+var passport = require('passport');
+var Local = require('passport-local').Strategy;
+var query = require('./db/queries');
+var bcrypt = require('bcrypt');
+
+passport.use(new Local(
+	function(username, password, done) {
+		query.getSingleUserByUsername(username)
+		.then(function(users) {
+
+			let user = users[0];
+
+			if(bcrypt.compareSync(password, user.password_hash)){
+
+				done(null, user); // If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
+
+			} else {
+
+				done(null, false); // If the credentials are not valid (for example, if the password is incorrect) We could add a flash message.
+
+			}
+		})
+		.catch(function(err) {
+			done(null, false);
+		})
+
+	}
+));
+
+passport.serializeUser(function(user, done) {
+	done(null, user.username);
+});
+
+passport.deserializeUser(function(username, done) {
+	query.getSingleUserByUsername(username)
+	.then(function(data){
+		let user = data[0];
+		done(null, user);
+	})
+	.catch(function(err) {
+		return next(err);
+	})
+
+
+
+});
+
+module.exports = passport;

@@ -6,7 +6,7 @@ var queries = require('../db/queries');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
-  
+
 });
 
 module.exports = router;
