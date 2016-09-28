@@ -75,9 +75,6 @@
   </div>
 
   <div class="jumbotron profileJumboAdjust" id="map">
-    <h1>Map</h1>
-    <p>This map will display color-coded icons representing where the truck will be on each day. We'll need a color to denote an icon that matches where the truck is right then. My first thought is either white or black. Or option 2.</p>
-    <p><a class="btn btn-primary btn-lg">Option 2</a></p>
   </div>
 
 <!-- User Reviews -->
@@ -93,17 +90,21 @@
 
     <hr data-brackets-id="12673">
     <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-      <strong class="pull-left primary-font">Dr. Ken Hurt</strong>
+      {{#if truck.reviews}}
+        {{#each truck.reviews}}
+      <strong class="pull-left primary-font">NAME</strong>
+    </br>
+      <small class="pull-right text-muted">
+       <span class="glyphicon glyphicon-time"></span>{{created_at}}</small>
+      <li class="ui-state-default" id="test">{{content}}</li>
+        {{/each}}
+      {{else}}
+        <h1>Be the first to review {{truck.0.truck_name}}!</h1>
+      {{/if}}
+      <!-- <strong class="pull-left primary-font">Dr. Ken Hurt</strong>
       <small class="pull-right text-muted">
        <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
-      </br>
-      <li class="ui-state-default" id="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-      </br>
-      <strong class="pull-left primary-font">Bartholomew Hipman</strong>
-      <small class="pull-right text-muted">
-       <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-      </br>
-        <li class="ui-state-default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+      <li class="ui-state-default" id="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li> -->
     </ul>
   </div>
 
