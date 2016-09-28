@@ -1,27 +1,18 @@
 
-.thumb {
-  height: 75px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
-}
-
-.mainContain{
-  display: flex;
-  flex-flow: row;
-  margin-left: 70px;
-}
-
-.mainTruck, .mainReview{
-  width: 550px;
-  margin-right: 50px;
-  padding:5px;
-}
-
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-}#map {
+}
+
+.searchForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#map {
   width: 100%;
   height: 400px;
   background-color: grey;
@@ -31,6 +22,87 @@ html, body {
   margin: 20px;
   padding: 0px;
 }
+
+
+.thumb {
+  height: 75px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0;
+}
+
+.mainContain{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mainTruck {
+  width: 69vw;
+  min-width: 400px;
+  min-height: 200px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.mainReview {
+  width: 29vw;
+  min-width: 400px;
+  min-height: 200px;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#selectTruckMessage {
+}
+
+.truckSnapshot {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.truckSnapshotImageBox {
+  height: 100%;
+  width: 20%;
+  min-width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.truckSnapshotImage {
+  width: 90%;
+}
+
+.truckSnapshotInfoBox {
+  width: 80%;
+}
+
+.truckSnapshotLink {
+  color: blue;
+}
+
+.truckSnapshotOpen {
+  color: green;
+}
+
+.truckSnapshotClose {
+  color: maroon;
+}
+
 
 /*START SIGNUP PAGE*/
 .myMain {
@@ -74,7 +146,7 @@ html, body {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0,0,0,0.7);
+  /*background-color: rgba(0,0,0,0.7);*/
   padding: 20px;
 }
 
@@ -89,7 +161,8 @@ html, body {
 
 .truckName {
   margin-bottom: 20px;
-  color: white;
+  color: black;
+  text-align: center;
 }
 
 .logoContain{
@@ -154,14 +227,16 @@ html, body {
   border-bottom: 2px solid black;
   width: 100%;
   text-align: center;
-  font-size: 20px;
+  font-size: 2vmin;
   padding: 5px 0px;
 }
 
 .scheduleDayInfo {
   display: flex;
   flex-direction: column;
-  padding: 10px 0px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
 }
 
 .scheduleTime {
