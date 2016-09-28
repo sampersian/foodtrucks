@@ -4,20 +4,7 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../db/queries.js')
 
-function today() {
-  var d = new Date();
-  var n = d.getDay();
-  let days = {
-    0: "sunday",
-    1: "monday",
-    2: "tuesday",
-    3: "wednesday",
-    4: "thursday",
-    5: "friday",
-    6: "saturday"
-  }
-  return days[n];
-}
+
 
 
 
@@ -27,7 +14,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/today/locations', function (req, res, next) {
-  queries.GetScheduleDay(today())
+  queries.GetScheduleDay()
   .then((data) => {
     res.send(data);
   })
