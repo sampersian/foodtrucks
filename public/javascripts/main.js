@@ -95,7 +95,9 @@ function truckSearch() {
 }
 
 function showAllLocationsWithin(nMiles) {
+  console.log("deleting markers");
   deleteMarkers();
+  console.log("showing markers within "+nMiles+" miles");
   for (let l of locations) {
     if (haversineDistance(userLocation, l.location) < nMiles) {
       addMarker(l)
