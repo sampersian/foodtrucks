@@ -18,7 +18,7 @@ function showForm(aForm) {
   let formName = aForm+"SignupForm";
   $('.'+formName).show()
 }
-let d;
+
 function geoCoder(address){
      var formattedAddress = address.split(' ').join('+');
   $.ajax({
@@ -44,11 +44,10 @@ function geoCodeAddress(address, truckObject){
     }
   })
 }
-let ddd;
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  // $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
