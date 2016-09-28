@@ -27,8 +27,10 @@ function initMap() {
         position: myLatLng,
         title: 'You are here!'
       });
-      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      $.get('http://localhost:3000/today/locations')
       .then((data) => {
+        console.log(data);
         for (d of data) {
           geoCodeAddress(d.location, d);
         }

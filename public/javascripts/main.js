@@ -99,7 +99,7 @@ function showAllLocationsWithin(nMiles) {
   deleteMarkers();
   console.log("showing markers within "+nMiles+" miles");
   for (let l of locations) {
-    if (haversineDistance(userLocation, l.location) < nMiles) {
+    if (haversineDistance(userSpot, l.location) < nMiles) {
       addMarker(l)
     }
   }
