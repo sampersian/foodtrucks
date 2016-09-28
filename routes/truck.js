@@ -16,10 +16,21 @@ router.post('/new', function (req, res, next) {
 })
 
 router.get('/:id', function(req,res,next) {
-  return queries.getOneTruck(req.params.id)
-  .then((data) => {
-    console.log(data);
-    res.render('truck', {truck: data[0]});
+  var data={};
+  return queries.getScheduleTruck(req.params.id)
+  .then(function(result){
+    data=result;
+    for(var search in data){
+      if(data[search].open_time > 1200){
+        data[search].open_time=data[search].open_time-1200;
+      }
+      if(data[search].close_time > 1200){
+        data[search].close_time=data[search].close_time-1200;
+      }
+    }
+    res.render('truck', {
+        truck: data,
+    });
   })
 })
 
