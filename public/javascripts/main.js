@@ -47,8 +47,8 @@ function geoCodeAddress(address, truckObject){
 let ddd;
 
 function loadTruckInfo(id) {
-  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  // $.get('http://localhost:3000/truck/info/'+id)
+  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
@@ -141,13 +141,24 @@ function showAllLocationsWithin(nMiles) {
 }
 
 function showTrucksWithName() {
+  deleteMarkers();
   let term = $("#searchTerm").val();
-  console.log('searching for '+term);
+  for (let l of locations) {
+    if (l.truck_name == term) {
+      addMarker(l)
+      console.log(l);
+    }
+  }
 }
 
 function showTrucksWithType() {
+  deleteMarkers();
   let term = $("#searchTerm").val();
-  console.log('searching for '+term);
+  for (let l of locations) {
+    if (l.genre == term) {
+      addMarker(l)
+    }
+  }
 }
 
 // Adds a marker to the map and push to the array.
