@@ -36,6 +36,11 @@ router.post('/', function (req, res, next) {
   })
 });
 
+// Truck signup
+router.get('/truck', function (req, res, next) {
+  res.render('truckSignUp')
+});
+
 
 
 module.exports = router;
