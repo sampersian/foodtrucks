@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt');
 
 function today() {
   var d = new Date();
+  d.setTime( d.getTime() + d.getTimezoneOffset()*60*1000 );
   var n = d.getDay();
   let days = {
     0: "sunday",

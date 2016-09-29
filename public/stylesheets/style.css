@@ -416,3 +416,10 @@ header{
   background-color: silver;
   padding: 5px 20px 10px 20px;
 }
+
+
+.signupErrorMessage {
+  text-align: center;
+  width: 100%;
+  color: red;
+}
