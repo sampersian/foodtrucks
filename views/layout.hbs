@@ -52,7 +52,7 @@
             <button type="submit" class="btn btn-default" id="search">Search</button>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            {{#if loggedIn}}
+            {{#if user.image_url}}
             <image class="circle" src="{{user.image_url}}" alt="user image">
             {{/if}}
           </ul>
