@@ -27,8 +27,8 @@ function initMap() {
       //   position: myLatLng,
       //   title: 'You are here!'
       // });
-      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      $.get('http://localhost:3000/today/locations')
+      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      // $.get('http://localhost:3000/today/locations')
       .then((data) => {
         console.log("this is what our get to /today/locations returns ",data);
         let promises = [];
