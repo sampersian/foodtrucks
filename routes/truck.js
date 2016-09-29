@@ -2,6 +2,9 @@
 
 var express = require('express');
 var router = express.Router();
+var session = require('express-session');
+var passport = require('../passport');
+var flash = require('connect-flash');
 var queries = require('../db/queries.js');
 
 function makeTimeNeat(time) {
