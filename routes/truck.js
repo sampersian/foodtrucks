@@ -99,4 +99,11 @@ router.get('/info/:id', function (req, res, next) {
   })
 })
 
+router.get('/schedule/:id', function (req, res, next) {
+  return queries.getScheduleTruck(req.params.id)
+  .then((data) => {
+    res.send(data)
+  })
+})
+
 module.exports = router;
