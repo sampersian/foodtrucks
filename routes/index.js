@@ -4,16 +4,17 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../db/queries.js')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
-  if(req.user) {
+  if(!req.user) {
+    next();
+	}else {
     res.render('index',{loggedIn: "yes"});
 
-	}else {
-    console.log('router get /login success')
-    res.render('login');
 	}
 });
+router.get('/',function(req,res,next){
+  res.render('index');
+})
 
 router.get('/today/locations', function (req, res, next) {
   queries.GetScheduleDay()
