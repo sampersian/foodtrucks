@@ -29,6 +29,18 @@ function makeTimeNeat(time) {
   return newStringTime;
 }
 
+router.get('/picture', function(req, res, next) {
+  return queries.User().where('username', req.user)
+  .then(function(user) {
+      console.log(user[0].image_url);
+      // res.render('layout', {user: user[0]});
+
+      //res.render('truck',{loggedIn: "yes", user: user[0]});
+    })
+   .catch(function(error) {return next(error);
+  });
+})
+
 // /truck
 router.get('/new', function (req, res, next) {
   res.render('newTruck');

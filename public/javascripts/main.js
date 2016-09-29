@@ -156,6 +156,15 @@ function showTrucksWithType() {
   }
 }
 
+function showDay(day) {
+  deleteMarkers();
+  for (let l of locations) {
+    if (l.date === day) {
+      addMarker(l)
+    }
+  }
+}
+
 // Adds a marker to the map and push to the array.
 function addMarker(l) {
   let icontitle;

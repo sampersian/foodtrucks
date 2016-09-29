@@ -26,7 +26,7 @@ function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 12
+        zoom: 10
       });
       // var marker = new google.maps.Marker({
       //   map: map,
@@ -59,7 +59,7 @@ function initMap() {
         })
       } else if (maptype === "truck") {
         $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
-        // $.get('http://localhost:3000/truck/schedule/'+anId)
+        // $.get('http://localhost:3000/api/schedule/'+anId)
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
