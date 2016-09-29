@@ -324,6 +324,10 @@ header{
   border-right: 5px solid black;
 }
 
+.scheduleDay:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
 .scheduleDay .scheduleDayName {
   color: black;
   font-weight: bold;
@@ -383,7 +387,7 @@ header{
 
 .profileJumboAdjust{
   width:70vw;
-  padding:1vw;
+  padding: 1vw 0vw;
 }
 
 .reviewContain{

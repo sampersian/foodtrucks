@@ -43,8 +43,8 @@ function geoCodeAddress(address){
 }
 
 function loadTruckInfo(id) {
-  $.get('https://hipfoodtrucks.herokuapp.com/api/info/'+id)
-  // $.get('http://localhost:3000/api/info/'+id)
+  // $.get('https://hipfoodtrucks.herokuapp.com/api/info/'+id)
+  $.get('http://localhost:3000/api/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
@@ -151,6 +151,15 @@ function showTrucksWithType() {
   let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
     if (l.genre.toLowerCase().includes(term)) {
+      addMarker(l)
+    }
+  }
+}
+
+function showDay(day) {
+  deleteMarkers();
+  for (let l of locations) {
+    if (l.date === day) {
       addMarker(l)
     }
   }

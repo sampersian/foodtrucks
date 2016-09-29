@@ -26,7 +26,7 @@ function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 12
+        zoom: 10
       });
       // var marker = new google.maps.Marker({
       //   map: map,
@@ -34,8 +34,8 @@ function initMap() {
       //   title: 'You are here!'
       // });
       if (maptype === "main") {
-        $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-        // $.get('http://localhost:3000/today/locations')
+        // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+        $.get('http://localhost:3000/today/locations')
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
@@ -58,8 +58,8 @@ function initMap() {
           showAllLocationsWithin(5);
         })
       } else if (maptype === "truck") {
-        $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
-        // $.get('http://localhost:3000/truck/schedule/'+anId)
+        // $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
+        $.get('http://localhost:3000/api/schedule/'+anId)
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
