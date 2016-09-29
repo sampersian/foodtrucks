@@ -12,7 +12,9 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand logo">HipFoodTrucks</a>
-
+          {{#if loggedIn}}
+          <image class="circle" src="{{user.image_url}}" alt="user image">
+          {{/if}}
 
         <button class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" >&#9776;</button>
         <button class="cross navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#735;</button>
