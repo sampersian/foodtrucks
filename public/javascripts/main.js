@@ -217,3 +217,8 @@ function deleteMarkers() {
     markersArray.length = 0;
   }
 }
+
+// Review Submission
+$('#reviewSubmit').click(function(){
+  var url='$('')
+})

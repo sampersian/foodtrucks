@@ -2,7 +2,6 @@
 
 var express = require('express');
 var router = express.Router();
-
 var queries = require('../db/queries.js');
 
 function makeTimeNeat(time) {
@@ -76,16 +75,6 @@ router.get('/:id', function(req,res,next) {
     })
   })
 })
-//     return queries.GetTruckReviews(req.params.id)
-//     .then(function(reviews){
-//       data.reviews=reviews;
-//       console.log("Here!")
-//       res.render('truck', {
-//         truck: data,
-//       });
-//     })
-//   })
-// })
 
 router.get('/info/:id', function (req, res, next) {
   return queries.getOneTruckToday(req.params.id)

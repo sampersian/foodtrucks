@@ -81,10 +81,11 @@
   <div class="well">
     <h4>Write a review?</h4>
 
-    <div action="" method="POST" class="input-group">
-      <input type="text" name="review" id="userComment" class="form-control input-sm chat-input" placeholder="Write your review here..." />
+    <div action='/new/review' method='POST' class="input-group">
+      <input type='text' name='content' id='userComment' class="form-control input-sm chat-input" placeholder="Write your review here..." />
+      <input type='hidden' name='truck_id' value='{{truck.0.truck_name}}'/>
 	    <span class="input-group-btn">
-      <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Review</a>
+      <a class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Review</a>
       </span>
     </div>
 
