@@ -32,7 +32,7 @@ function geoCoder(address){
   })
 }
 
-//could i turn this into a $.get and remove error? 
+//could i turn this into a $.get and remove error?
 function geoCodeAddress(address){
      var formattedAddress = address.split(' ').join('+');
   return $.ajax({
@@ -43,8 +43,8 @@ function geoCodeAddress(address){
 }
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
-  $.get('http://localhost:3000/truck/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/truck/info/'+id)
+  // $.get('http://localhost:3000/truck/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
