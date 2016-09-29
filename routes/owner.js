@@ -10,11 +10,10 @@ router.get('/', function (req, res, next) {
   res.render('signup');
 })
 
-router.post('/signup', function (req, res, next) {
+router.post('/', function (req, res, next) {
   if(req.body.ownerSignupPassword === req.body.ownerSignupPassword2){
     console.log('Password match for Owner Account Creation');
     queries.getSingleOwnerByUsername(req.body.ownerSignupUsername).then(function(data){
-      console.log('one');
       if(req.body.ownerSignupUsername===data[0].username){
         console.log('Password match for Owner Account Creation');
         res.send('Error Please Use A Different Username');
