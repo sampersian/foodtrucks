@@ -7,12 +7,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
-
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
-        <button class="hamburger">&#9776;</button>
-        <button class="cross">&#735;</button>
+        <div class="navbar-header">
+          <a class="navbar-brand logo">HipFoodTrucks</a>
+
+
+        <button class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#9776;</button>
+        <button class="cross navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#735;</button>
       </header>
 
       <div class="menu">
@@ -20,11 +23,13 @@
           {{#if loggedIn}}
           <a href="/"><li>Home</li></a>
           <a href="/logout"><li>Logout</li></a>
+          <image src="{{user.image_url}}" alt="user image">
           {{else}}
           <a href="/login"><li>Login</li></a>
           {{/if}}
         </ul>
       </div>
+    </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">

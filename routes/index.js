@@ -23,4 +23,15 @@ router.get('/today/locations', function (req, res, next) {
   })
 })
 
+router.get('/', function (req, res, next) {
+  return knex('user')
+  .then(function(user) {
+      console.log(user);
+      res.render('layout', {user: user});
+    })
+   .catch(function(error) {return next(error);
+  });
+});
+
+
 module.exports = router;
