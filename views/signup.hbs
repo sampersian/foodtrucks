@@ -1,5 +1,5 @@
 <main class="myMain">
-  <form class="signupForm ownerSignupForm" action="/owner/signup" method="post">
+  <form class="signupForm ownerSignupForm" action="/owner" method="post">
     <div class="formTopper">
       <h3>Owner Signup</h3>
       <button type="button" class="btn btn-info" name="showUserSignupButton" onclick="showForm('user')">User Signup</button>
@@ -61,7 +61,8 @@
     </div>
     <div class="form-group">
       <label>User Profile Picture</label>
-      <input type="file" class="form-control" id="files" name="userSignupImage"/>
+      <br>
+      <input type="url" name="userPic" class="form-control" id="userSignupPicture" placeholder="URL">
       <output id="list"></output>
     </div>
     <input type="submit" class="form-control btn btn-success" id="userSignupSubmit" name="userSignupSubmit" value="Submit">

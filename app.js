@@ -49,6 +49,7 @@ app.use('/', routes);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
+app.use('/owner', owner);
 app.use(function(req,res,next){
     if(req.user){
       next();
@@ -56,7 +57,6 @@ app.use(function(req,res,next){
         next(new Error(401)); // 401 Not Authorized
     }
 });
-app.use('/owner', owner);
 app.use('/truck', truck);
 app.use('/users', users);
 app.use('/events', events);
