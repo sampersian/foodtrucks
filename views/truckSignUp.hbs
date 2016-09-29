@@ -1,43 +1,5 @@
 <main class="myMain">
-  <form class="signupForm userSignupForm" action="/signup" method="post">
-    <div class="formTopper">
-      <h3>User Signup</h3>
-      <button type="button" class="btn btn-info" name="showUserSignupButton" onclick="showForm('owner')">Owner Signup</button>
-    </div>
-    <div class="form-group">
-      <label>First</label>
-      <input type="text" class="form-control" id="userSignupFirst" name="userSignupFirst" placeholder="First Name" required>
-    </div>
-    <div class="form-group">
-      <label>Last</label>
-      <input type="text" class="form-control" id="userSignupLast" name="userSignupLast" placeholder="Last Name" required>
-    </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="email" class="form-control" id="userSignupEmail" name="userSignupEmail" placeholder="Email" required>
-    </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" id="userSignupUsername" name="userSignupUsername" placeholder="Username" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" id="userSignupPassword" name="userSignupPassword" placeholder="Password" required>
-    </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="userSignupPassword2" name="userSignupPassword2" placeholder="Password Match" required>
-    </div>
-    <div class="form-group">
-      <label>User Profile Picture</label>
-      <br>
-      <input type="url" name="userPic" class="form-control" id="userSignupPicture" placeholder="URL">
-      <output id="list"></output>
-    </div>
-    <input type="submit" class="form-control btn btn-success" id="userSignupSubmit" name="userSignupSubmit" value="Submit">
-    <input type="hidden" name="signupType" value="user">
-  </form>
-
-  <form class="signupForm ownerSignupForm" action="/truck" method="post">
+  <form class="truckSignupForm ownerSignupForm" action="/truck" method="post">
     <div class="formTopper">
       <h3>Truck Register</h3>
     </div>
@@ -50,16 +12,18 @@
       <input type="text" class="form-control" name="genre" placeholder="What style of food do you make? (three words or less)" required>
     </div>
     <div class="form-group">
-      <label>Please give a brief description of your truck</label>
-      <input type="email" class="form-control" id="ownerSignupEmail" name="ownerSignupEmail" placeholder="Remember: all users will be able to read this description!" required>
+      <label>Brief description of your truck:</label>
+      <input type="email" class="form-control" id="ownerSignupEmail" name="ownerSignupEmail" placeholder="All users will be able to read this description!" required>
     </div>
     <div class="form-group">
       <label>Image URL</label>
       <input type="text" class="form-control" name="image_url" placeholder="www.MyPic.com" required>
     </div>
+    <h3>Schedule</h3>
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" id="ownerSignupPassword" name="ownerSignupPassword" placeholder="Password" required>
+      <label name='sunday'>Sunday</label>
+      <input type="text" class="form-control" name="sundayOpen" placeholder="When do you open?" required>
+      <input type="text" class="form-control" name="close" placeholder="When do you close?" required>
     </div>
     <div class="form-group">
       <input type="password" class="form-control" id="ownerSignupPassword2" name="ownerSignupPassword2" placeholder="Password Match" required>
