@@ -178,8 +178,8 @@ function addMarker(l) {
   var newMarker = new google.maps.Marker({
     map: map,
     position: l.location,
-    title: l.truck_name,
-    truck_id: l.street_address
+    title: l.street_address,
+    truck_id: l.truck_id
   });
   google.maps.event.addDomListener(newMarker, 'click', function() {
     loadTruckInfo(newMarker.truck_id)
