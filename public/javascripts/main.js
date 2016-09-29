@@ -1,6 +1,6 @@
 "use strict"
 var userIntention='true'
-let specified;
+let specifiede;
 let locations = [];
 let numberReviews = 0;
 let truckReviewCurrent = 0;
@@ -10,6 +10,19 @@ $(document).ready(function() {
     showForm(specified);
   } else {
     showForm('user')
+  }
+})
+
+$('.signupForm').submit((event) => {
+  event.preventDefault();
+  let up1 = $('#userSignupPassword1')
+  let up2 = $('#userSignupPassword2')
+  let op1 = $('#ownerSignupPassword1')
+  let op2 = $('#ownerSignupPassword2')
+  if (up1 === up2 && op1 === op2) {
+    $(this).submit();
+  } else {
+    $('.signupErrorMessage').text("Passwords do not match!")
   }
 })
 
@@ -43,8 +56,8 @@ function geoCodeAddress(address){
 }
 
 function loadTruckInfo(id) {
-  // $.get('https://hipfoodtrucks.herokuapp.com/api/info/'+id)
-  $.get('http://localhost:3000/api/info/'+id)
+  $.get('https://hipfoodtrucks.herokuapp.com/api/info/'+id)
+  //  $.get('http://localhost:3000/api/info/'+id)
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
