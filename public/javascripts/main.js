@@ -13,6 +13,19 @@ $(document).ready(function() {
   }
 })
 
+$('.signupForm').submit((event) => {
+  event.preventDefault();
+  let up1 = $('#userSignupPassword1')
+  let up2 = $('#userSignupPassword2')
+  let op1 = $('#ownerSignupPassword1')
+  let op2 = $('#ownerSignupPassword2')
+  if (up1 === up2 && op1 === op2) {
+    $(this).submit();
+  } else {
+    $('.signupErrorMessage').text("Passwords do not match!")
+  }
+})
+
 function showForm(aForm) {
   $('.signupForm').hide()
   let formName = aForm+"SignupForm";
