@@ -1,5 +1,5 @@
 "use strict"
-
+var userIntention='true'
 let specified;
 let locations = [];
 let numberReviews = 0;
