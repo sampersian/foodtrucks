@@ -9,9 +9,16 @@ passport.use(new Local(
 	function(username, password, done) {
 		query.getSingleUserByUsername(username)
 		.then(function(users) {
-
-			let user = users[0];
-
+			let user;
+			if (users.length === 0) {
+				query.getSingleOwnerByUsername(username)
+				.then((data) => {
+					user = data[0];
+				})
+			} else {
+				user = users[0];
+			}
+			console.log(user);
 			if(bcrypt.compareSync(password, user.password)){
 
 				done(null, user); // If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
