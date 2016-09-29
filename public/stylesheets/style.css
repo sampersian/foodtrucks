@@ -5,16 +5,9 @@ html, body {
     padding: 0;
 }
 
-/*.navbar {
-  display: flex;
-  align-items: center;
-
+.directions {
+  color: blue;
 }
-
-.navbar-inverse {
-  display: flex;
-  align-items: center;
-}*/
 
 .circle {
   display: block;
