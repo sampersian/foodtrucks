@@ -338,11 +338,15 @@ header{
   justify-content: center;
   align-items: center;
   padding: 10px;
+  font-size: 2vmin;
+  text-align: center;
 }
 
 .scheduleTime {
   display: block;
   color: black;
+  font-size: 2vmin;
+  text-align: center;
 }
 
 .scheduleLocation {
