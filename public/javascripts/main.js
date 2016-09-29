@@ -14,14 +14,19 @@ $(document).ready(function() {
 })
 
 $('.signupForm').submit((event) => {
-  event.preventDefault();
-  let up1 = $('#userSignupPassword1')
-  let up2 = $('#userSignupPassword2')
-  let op1 = $('#ownerSignupPassword1')
-  let op2 = $('#ownerSignupPassword2')
+  let up1 = $('#userSignupPassword').val()
+  console.log(up1);
+  let up2 = $('#userSignupPassword2').val()
+  console.log(up2);
+  let op1 = $('#ownerSignupPassword').val()
+  console.log(op1);
+  let op2 = $('#ownerSignupPassword2').val()
+  console.log(op2);
   if (up1 === up2 && op1 === op2) {
-    $(this).submit();
+    console.log("MAtch");
+    $('.signupForm').submit();
   } else {
+    event.preventDefault();
     $('.signupErrorMessage').text("Passwords do not match!")
   }
 })
