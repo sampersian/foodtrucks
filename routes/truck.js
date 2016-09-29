@@ -2,7 +2,9 @@
 
 var express = require('express');
 var router = express.Router();
-
+var session = require('express-session');
+var passport = require('../passport');
+var flash = require('connect-flash');
 var queries = require('../db/queries.js');
 
 function makeTimeNeat(time) {
@@ -51,7 +53,7 @@ router.post('/new', function (req, res, next) {
 
 router.get('/:id', function(req,res,next) {
   var data={};
-  return queries.getScheduleTruck(req.params.id)
+  queries.getScheduleTruck(req.params.id)
   .then(function(result){
     data=result;
     for(var search in data){
@@ -69,50 +71,15 @@ router.get('/:id', function(req,res,next) {
         data[search].close_time=makeTimeNeat(data[search].close_time);
       }
     }
-    return queries.GetTruckReviews(req.params.id)
+    queries.GetTruckReviews(req.params.id)
     .then(function(reviews){
       data.reviews=reviews;
-      return queries.getAllUsers()
-      .then(function(userdata){
-        for(var reviewSift in data.reviews){
-          for(var userSearch in userdata){
-            if(data.reviews[reviewSift].user_id===userdata[userSearch].id){
-              data.reviews[reviewSift].name=userdata[userSearch].username;
-            }
-          }
-        }
-        //
-        //
-        //
-        var picture;
-        queries.User().where('username', req.user)
-        .then(function(user) {
-            res.render('truck', {
-              truck: data,
-              loggedIn: "yes",
-              user: user[0]
-            });
-            // res.rend er('layout', {user: user[0]});
-
-            //res.render('truck',{loggedIn: "yes", user: user[0]});
-          })
-
-
-      })
     })
+    res.render('truck', {
+      truck: data,
+      loggedIn: "yes"
+    });
   })
 })
-//     return queries.GetTruckReviews(req.params.id)
-//     .then(function(reviews){
-//       data.reviews=reviews;
-//       console.log("Here!")
-//       res.render('truck', {
-//         truck: data,
-//       });
-//     })
-//   })
-// })
-
-
 
 module.exports = router;

@@ -82,7 +82,6 @@ function initMap() {
           showAllLocations();
         })
       }
-
   })
 }
 
