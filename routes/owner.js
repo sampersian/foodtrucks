@@ -24,7 +24,7 @@ router.post('/', function (req, res, next) {
   }
 })
 
-router.post('/signup', function (req, res, next) {
+router.post('/', function (req, res, next) {
   console.log('A new account was created successfully for Owner Account')
   queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, req.body.ownerSignupUsername, req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
     res.redirect('/');
