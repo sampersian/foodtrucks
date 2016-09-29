@@ -31,6 +31,8 @@ function geoCoder(address){
     }
   })
 }
+
+//could i turn this into a $.get and remove error? 
 function geoCodeAddress(address){
      var formattedAddress = address.split(' ').join('+');
   return $.ajax({
