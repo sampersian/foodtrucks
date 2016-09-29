@@ -134,7 +134,7 @@ module.exports = {
 		return knex('user').join('review', 'review.user_id', 'user.id').where('user_id', id);
 	},
   // Add new
-  addNewUser: function(first_name, last_name, username, password, email){
+  addNewUser: function(first_name, last_name, username, password, email, url){
 
     if (!username || !password) {
 		    return false;
@@ -145,7 +145,8 @@ module.exports = {
 			last_name: last_name,
 		  username: username,
 			password: hashPassword(password),
-      email: email
+      email: email,
+      image_url: url
 		});
 
   },

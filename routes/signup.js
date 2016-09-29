@@ -30,7 +30,7 @@ router.post('/', function (req, res, next) {
 })
 
 router.post('/', function (req, res, next) {
-  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail).then(function(data){
+  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic).then(function(data){
     console.log('A new account was created successfully for User Account')
     res.redirect('/');
   })

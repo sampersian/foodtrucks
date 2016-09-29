@@ -1,5 +1,5 @@
 "use strict"
-
+var userIntention='true'
 let specified;
 let locations = [];
 let numberReviews = 0;
@@ -158,27 +158,16 @@ function showTrucksWithType() {
 
 // Adds a marker to the map and push to the array.
 function addMarker(l) {
-  // var pinColor = "4286f4";
-  // var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-  //     new google.maps.Size(21, 34),
-  //     new google.maps.Point(0,0),
-  //     new google.maps.Point(10, 34));
-  // var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-  //     new google.maps.Size(40, 37),
-  //     new google.maps.Point(0, 0),
-  //     new google.maps.Point(12, 35));
-  // var newMarker = new google.maps.Marker({
-  //   map: map,
-  //   position: l.location,
-  //   title: l.truck_name,
-  //   truck_id: l.truck_id,
-  //   icon: pinImage,
-  //   shadow: pinShadow
-  // });
+  let icontitle;
+  if (document.URL.indexOf("/truck/") > -1) {
+    icontitle = l.date;
+  } else {
+    icontitle = l.street_address
+  }
   var newMarker = new google.maps.Marker({
     map: map,
     position: l.location,
-    title: l.street_address,
+    title: icontitle,
     truck_id: l.truck_id
   });
   google.maps.event.addDomListener(newMarker, 'click', function() {
@@ -214,8 +203,3 @@ function deleteMarkers() {
     markersArray.length = 0;
   }
 }
-
-// Review submit
-$('#reviewSubmit').click(function(){
-  event.preventDefault();
-})

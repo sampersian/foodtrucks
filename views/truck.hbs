@@ -81,14 +81,16 @@
   <div class="well">
     <h4>Write a review?</h4>
 
-    <form action='/new/review' method='POST' class="input-group">
+    <form action='/review/new' method='POST' class="input-group">
       <input type='text' name='content' class="form-control input-sm chat-input" placeholder="Write your review here..." />
       <div class="checkbox">
         <label>
-          <input type="checkbox" name='is_positive'>I would eat at {{truck.0.truck_name}} again!
+          I would eat at {{truck.0.name}} again:
+          <input type="radio" name='is_positive' value='true' checked>Yes!
+          <input type="radio" name='is_positive' value='false'>No
         </label>
       </div>
-      <input type='hidden' name='truck_id' value='{{truck.0.truck_name}}'/>
+      <input type='hidden' name='truck_id' value='{{truck.0.id}}'/>
 	    <span class="input-group-btn">
       <button type="submit" class="btn btn-primary btn-sm" id='reviewSubmit'><span class="glyphicon glyphicon-comment"></span> Add Review</button>
       </span>

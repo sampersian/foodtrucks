@@ -70,6 +70,7 @@ router.get('/:id', function(req,res,next) {
               data.reviews[reviewSift].name=userdata[userSearch].username;
             }
           }
+          console.log(data.reviews[reviewSift].name, userdata[userSearch].username)
         }
         res.render('truck', {
           truck: data,
@@ -88,6 +89,13 @@ router.get('/info/:id', function (req, res, next) {
       truck_data.reviews = review_data;
       res.send({data: truck_data});
     })
+  })
+})
+
+router.get('/schedule/:id', function (req, res, next) {
+  return queries.getScheduleTruck(req.params.id)
+  .then((data) => {
+    res.send(data)
   })
 })
 
