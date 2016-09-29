@@ -12,14 +12,10 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <a class="navbar-brand logo">HipFoodTrucks</a>
-          {{#if loggedIn}}
-          <image class="circle" src="{{user.image_url}}" alt="user image">
-          {{/if}}
 
         <button class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" >&#9776;</button>
         <button class="cross navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#735;</button>
       </header>
-
       <div class="menu">
         <ul>
           {{#if loggedIn}}
@@ -55,6 +51,11 @@
             </div>
             <button type="submit" class="btn btn-default" id="search">Search</button>
           </form>
+          <ul class="nav navbar-nav navbar-right">
+            {{#if loggedIn}}
+            <image class="circle" src="{{user.image_url}}" alt="user image">
+            {{/if}}
+          </ul>
           <ul class="nav navbar-nav navbar-right">
             {{#if loggedIn}}
               <li><a href="/logout">Logout</a></li>
