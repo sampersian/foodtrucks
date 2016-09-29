@@ -1,6 +1,6 @@
 "use strict"
 var userIntention='true'
-let specifiede;
+let specified;
 let locations = [];
 let numberReviews = 0;
 let truckReviewCurrent = 0;
