@@ -71,6 +71,7 @@ router.get('/:id', function(req,res,next) {
         }
         res.render('truck', {
           truck: data,
+          loggedIn: "yes"
         });
       })
     })
