@@ -71,10 +71,13 @@ router.get('/:id', function(req,res,next) {
         data[search].close_time=makeTimeNeat(data[search].close_time);
       }
     }
-    queries.GetTruckReviews(req.params.id)
-    .then(function(reviews){
-      data.reviews=reviews;
-    })
+  })
+  .then(() => {
+    return queries.GetTruckReviews(req.params.id)
+  })
+  .then((reviews) => {
+    data.reviews=reviews;
+    console.log(reviews);
     res.render('truck', {
       truck: data,
       loggedIn: "yes"
