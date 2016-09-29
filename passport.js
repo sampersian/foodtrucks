@@ -7,19 +7,26 @@ var bcrypt = require('bcrypt');
 
 passport.use(new Local(
 	function(username, password, done) {
+		console.log("PASSPORT", username)
 		query.getSingleUserByUsername(username)
 		.then(function(users) {
-
-			let user = users[0];
-
-			if(bcrypt.compareSync(password, user.password)){
-
-				done(null, user); // If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
-
+			let user;
+			if (users.length === 0) {
+				console.log("not a user",username)
+				return query.getSingleOwnerByUsername(username)
+				.then((data) => {
+					return data[0];
+				})
 			} else {
-
+				return users[0];
+			}
+		})
+		.then((user) => {
+			console.log("now compare", user);
+			if(bcrypt.compareSync(password, user.password)){
+				done(null, user); // If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
+			} else {
 				done(null, false); // If the credentials are not valid (for example, if the password is incorrect) We could add a flash message.
-
 			}
 		})
 		.catch(function(err) {
@@ -30,25 +37,35 @@ passport.use(new Local(
 ));
 
 passport.serializeUser(function(user, done) {
-	console.log('a');
+	console.log('a',user);
 	done(null, user.username);
 });
 
 passport.deserializeUser(function(username, done) {
 	console.log('b');
 	query.getSingleUserByUsername(username)
-	.then(function(data){
+	.then(function(users){
 		console.log('c');
-		let user = data[0].username;
+		let user;
+		if (users.length === 0) {
+			console.log("not a user",username)
+			return query.getSingleOwnerByUsername(username)
+			.then((owners) => {
+				return owners[0].username;
+			})
+		} else {
+			return users[0].username;
+		}
+
+	})
+	.then((user) => {
 		done(null, user);
 	})
 	.catch(function(err) {
 		console.log('d');
 		return next(err);
 	})
-
-
-
 });
+
 
 module.exports = passport;

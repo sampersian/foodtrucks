@@ -41,7 +41,7 @@ router.post('/new', function (req, res, next) {
 
 router.get('/:id', function(req,res,next) {
   var data={};
-  return queries.getScheduleTruck(req.params.id)
+  queries.getScheduleTruck(req.params.id)
   .then(function(result){
     data=result;
     for(var search in data){
@@ -59,44 +59,18 @@ router.get('/:id', function(req,res,next) {
         data[search].close_time=makeTimeNeat(data[search].close_time);
       }
     }
-    return queries.GetTruckReviews(req.params.id)
+    queries.GetTruckReviews(req.params.id)
     .then(function(reviews){
       data.reviews=reviews;
-      return queries.getAllUsers()
-      .then(function(userdata){
-        for(var reviewSift in data.reviews){
-          for(var userSearch in userdata){
-            if(data.reviews[reviewSift].user_id===userdata[userSearch].id){
-              data.reviews[reviewSift].name=userdata[userSearch].username;
-            }
-          }
-          console.log(data.reviews[reviewSift].name, userdata[userSearch].username)
-        }
-        res.render('truck', {
-          truck: data,
-        });
-      })
     })
+    res.render('truck', {
+      truck: data,
+      loggedIn: "yes"
+    });
   })
 })
 
-router.get('/info/:id', function (req, res, next) {
-  return queries.getOneTruckToday(req.params.id)
-  .then((data) => {
-    let truck_data = data[0];
-    return queries.GetTruckReviews(req.params.id)
-    .then((review_data) => {
-      truck_data.reviews = review_data;
-      res.send({data: truck_data});
-    })
-  })
-})
 
-router.get('/schedule/:id', function (req, res, next) {
-  return queries.getScheduleTruck(req.params.id)
-  .then((data) => {
-    res.send(data)
-  })
-})
+
 
 module.exports = router;

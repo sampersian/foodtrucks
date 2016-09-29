@@ -9,19 +9,14 @@ var queries = require('../db/queries');
 
 // Submit review
 router.post('/new', function (req,res,next) {
-  var user=0;
-  queries.getSingleUserByUsername(req.user)
-  .then(function(name){
-    var user=name.id;
-  })
   queries.getAllReviews().insert({
-    user_id: user,
+    username: req.user,
     truck_id: req.body.truck_id,
     content: req.body.content,
     is_positive: req.body.is_positive
   })
   .then(function(){
-    console.log(user, req.body.truck_id, req.body.content, req.body.is_positive)
+    console.log(req.user, req.body.truck_id, req.body.content, req.body.is_positive)
     res.redirect('/truck/'+req.body.truck_id)
   })
 })

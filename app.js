@@ -20,6 +20,7 @@ var users = require('./routes/users');
 var events = require('./routes/events');
 var results = require('./routes/results');
 var review = require('./routes/review');
+var api = require('./routes/api');
 
 var app = express();
 
@@ -46,18 +47,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-app.use('/', routes);
+
 app.use('/signup', signup);
 app.use('/login', login);
-app.use('/logout', logout);
-app.use('/owner', owner);
 app.use(function(req,res,next){
     if(req.user){
       next();
     }else{
-        next(new Error(401)); // 401 Not Authorized
+        res.redirect('/login'); // 401 Not Authorized
     }
 });
+app.use('/logout', logout);
+app.use('/', routes);
+app.use('/api', api);
+app.use('/owner', owner);
 app.use('/truck', truck);
 app.use('/users', users);
 app.use('/events', events);
