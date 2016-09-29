@@ -11,15 +11,20 @@
   <body>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand logo" href="/">HipFoodTrucks</a>
-        </div>
+        <button class="hamburger">&#9776;</button>
+        <button class="cross">&#735;</button>
+      </header>
+
+      <div class="menu">
+        <ul>
+          {{#if loggedIn}}
+          <a href="/"><li>Home</li></a>
+          <a href="/logout"><li>Logout</li></a>
+          {{else}}
+          <a href="/login"><li>Login</li></a>
+          {{/if}}
+        </ul>
+      </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
           <ul class="nav navbar-nav">
@@ -56,6 +61,7 @@
 
     {{{body}}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src='/javascripts/menu.js'></script>
     <script src='/javascripts/main.js'></script>
     <script src='/javascripts/map.js'></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC3pdD43USbZV5vRojdGTZ72TCr3b4ovs&callback=initMap"></script>
