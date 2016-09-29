@@ -49,8 +49,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/signup', signup);
 app.use('/login', login);
-app.use('/logout', logout);
-app.use('/owner', owner);
 app.use(function(req,res,next){
     if(req.user){
       next();
@@ -58,9 +56,10 @@ app.use(function(req,res,next){
         res.redirect('/login'); // 401 Not Authorized
     }
 });
+app.use('/logout', logout);
 app.use('/', routes);
 app.use('/api', api);
-
+app.use('/owner', owner);
 app.use('/truck', truck);
 app.use('/users', users);
 app.use('/events', events);
