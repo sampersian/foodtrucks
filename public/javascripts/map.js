@@ -19,18 +19,17 @@ function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
         center: myLatLng,
         scrollwheel: false,
-        zoom: 12
+        zoom: 10
       });
-
-      var marker = new google.maps.Marker({
-        map: map,
-        position: myLatLng,
-        title: 'You are here!'
-      });
-      // $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-      $.get('http://localhost:3000/today/locations')
+      // var marker = new google.maps.Marker({
+      //   map: map,
+      //   position: myLatLng,
+      //   title: 'You are here!'
+      // });
+      $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
+      // $.get('http://localhost:3000/today/locations')
       .then((data) => {
-        for (d of data) {
+        for (let d of data) {
           geoCodeAddress(d.location, d);
         }
       })

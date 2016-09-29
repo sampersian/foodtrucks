@@ -2,6 +2,9 @@
 
 let specified;
 let locations = [];
+let numberReviews = 0;
+let truckReviewCurrent = 0;
+let truckReviews = {};
 $(document).ready(function() {
   if (specified) {
     showForm(specified);
@@ -15,7 +18,7 @@ function showForm(aForm) {
   let formName = aForm+"SignupForm";
   $('.'+formName).show()
 }
-let d;
+
 function geoCoder(address){
      var formattedAddress = address.split(' ').join('+');
   $.ajax({
@@ -48,14 +51,38 @@ function loadTruckInfo(id) {
   .then((data) => {
     console.log(data)
     let truck_data = data.data;
-    $('#selectTruckMessage').hide();
+    let review_data = truck_data.reviews;
+    $('.selectTruckMessage').hide();
     $('.truckSnapshotName').text(truck_data.truck_name)
     $('.truckSnapshotOpen').text(makeTimeNeat(truck_data.open_time))
     $('.truckSnapshotClose').text(makeTimeNeat(truck_data.close_time))
     $('.truckSnapshotImage').attr('src', truck_data.image_url)
     $('.truckSnapshotLink').attr('href', "/truck/"+id)
     $('.truckSnapshot').css('display', 'flex');
+    $('.reviewSnapshotContent').show();
+    $('.reviewSnapshotMover').show();
+    truckReviewCurrent = 0;
+    truckReviews = {};
+    numberReviews = review_data.length;
+    for (let r in review_data) {
+      truckReviews[r] = review_data[r]
+    }
+    showTruckReview();
   })
+}
+
+function showTruckReview() {
+  $('.reviewSnapshotContent').text(truckReviews[truckReviewCurrent].content);
+}
+
+function nextReview() {
+  let nextNumber = truckReviewCurrent + 1;
+  if (nextNumber >= numberReviews) {
+    truckReviewCurrent = 0;
+  } else {
+    truckReviewCurrent = nextNumber;
+  }
+  showTruckReview();
 }
 
 function makeTimeNeat(time) {
@@ -113,13 +140,23 @@ function showAllLocationsWithin(nMiles) {
 }
 
 function showTrucksWithName() {
-  let term = $("#searchTerm").val();
-  console.log('searching for '+term);
+  deleteMarkers();
+  let term = $("#searchTerm").val().toLowerCase();
+  for (let l of locations) {
+    if (l.truck_name.toLowerCase().includes(term)) {
+      addMarker(l)
+    }
+  }
 }
 
 function showTrucksWithType() {
-  let term = $("#searchTerm").val();
-  console.log('searching for '+term);
+  deleteMarkers();
+  let term = $("#searchTerm").val().toLowerCase();
+  for (let l of locations) {
+    if (l.genre.toLowerCase().includes(term)) {
+      addMarker(l)
+    }
+  }
 }
 
 // Adds a marker to the map and push to the array.

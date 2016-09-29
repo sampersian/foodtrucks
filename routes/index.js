@@ -16,4 +16,5 @@ router.get('/today/locations', function (req, res, next) {
   })
 })
 
+
 module.exports = router;

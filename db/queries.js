@@ -69,6 +69,8 @@ function GetScheduleDay() {
 	.where('date', today());
 }
 
+
+
 module.exports = {
   // Get All
   getAllOwners: function(){
@@ -120,13 +122,17 @@ module.exports = {
   getSingleReview: function(id){
     return Review().where('id', id)
   },
+  // Search Call
+  getTrucksByName: function(term){
+    return Truck().where('truck_name', term);
+  },
 	// Get join
 	getScheduleTruck: function(id) {
 		return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('truck_id', id);
 	},
-	// getUserReview: function(id) {
-	// 	return knex('review').join('user', 'user.id', 'review.user_id').where('user_id', id);
-	// },
+	getUserReview: function(id) {
+		return knex('user').join('review', 'review.user_id', 'user.id').where('user_id', id);
+	},
   // Add new
   addNewUser: function(first_name, last_name, username, password, email){
 

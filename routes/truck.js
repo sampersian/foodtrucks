@@ -57,23 +57,46 @@ router.get('/:id', function(req,res,next) {
         data[search].close_time=makeTimeNeat(data[search].close_time);
       }
     }
-  return queries.GetTruckReviews(req.params.id)
-  .then(function(reviews){
-      data.reviews=reviews,
-      console.log(data)
-      res.render('truck', {
-        truck: data,
-      });
+    return queries.GetTruckReviews(req.params.id)
+    .then(function(reviews){
+      data.reviews=reviews;
+      return queries.getAllUsers()
+      .then(function(userdata){
+        for(var reviewSift in data.reviews){
+          for(var userSearch in userdata){
+            if(data.reviews[reviewSift].user_id===userdata[userSearch].id){
+              data.reviews[reviewSift].name=userdata[userSearch].username;
+            }
+          }
+        }
+        res.render('truck', {
+          truck: data,
+        });
+      })
+    })
+  })
+})
+//     return queries.GetTruckReviews(req.params.id)
+//     .then(function(reviews){
+//       data.reviews=reviews;
+//       console.log("Here!")
+//       res.render('truck', {
+//         truck: data,
+//       });
+//     })
+//   })
+// })
+
+router.get('/info/:id', function (req, res, next) {
+  return queries.getOneTruckToday(req.params.id)
+  .then((data) => {
+    let truck_data = data[0];
+    return queries.GetTruckReviews(req.params.id)
+    .then((review_data) => {
+      truck_data.reviews = review_data;
+      res.send({data: truck_data});
     })
   })
 })
 
-router.get('/info/:id', function (req, res, next) {
-  return queries.getOneTruckToday(req.params.id)
-  .then((truck_data) => {
-    res.send({data: truck_data[0]});
-  })
-})
-
 module.exports = router;
-// https://galvanize-ps.roomzilla.net/rooms/banana-room-lower-level/reservations/5262977/edit
