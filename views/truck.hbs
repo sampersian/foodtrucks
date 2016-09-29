@@ -92,19 +92,15 @@
     <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
       {{#if truck.reviews}}
         {{#each truck.reviews}}
-      <strong class="pull-left primary-font">NAME</strong>
+      <strong class="pull-left primary-font">{{name}} says:</strong>
     </br>
       <small class="pull-right text-muted">
        <span class="glyphicon glyphicon-time"></span>{{created_at}}</small>
       <li class="ui-state-default" id="test">{{content}}</li>
         {{/each}}
       {{else}}
-        <h1>Be the first to review {{truck.0.truck_name}}!</h1>
+        <h2>Be the first to review {{truck.0.truck_name}}!</h2>
       {{/if}}
-      <!-- <strong class="pull-left primary-font">Dr. Ken Hurt</strong>
-      <small class="pull-right text-muted">
-       <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
-      <li class="ui-state-default" id="test">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li> -->
     </ul>
   </div>
 
