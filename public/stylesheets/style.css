@@ -11,6 +11,11 @@ html, body {
   justify-content: center;
 }
 
+.logo {
+  color: red !important;
+  font-style: italic !important;
+  font-weight: bold !important;
+}
 
 #map {
   width: 100%;
@@ -20,6 +25,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 
 .myJumbo {
   margin: 20px;
