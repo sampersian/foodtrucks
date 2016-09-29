@@ -4,7 +4,7 @@
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/readable/bootstrap.min.css" rel="stylesheet" integrity="sha384-Li5uVfY2bSkD3WQyiHX8tJd0aMF91rMrQP5aAewFkHkVSTT2TmD2PehZeMmm7aiL" crossorigin="anonymous">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
   </head>
 
   <body>
@@ -14,7 +14,7 @@
           <a class="navbar-brand logo">HipFoodTrucks</a>
 
 
-        <button class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#9776;</button>
+        <button class="hamburger navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2" >&#9776;</button>
         <button class="cross navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">&#735;</button>
       </header>
 
@@ -23,7 +23,7 @@
           {{#if loggedIn}}
           <a href="/"><li>Home</li></a>
           <a href="/logout"><li>Logout</li></a>
-          <!-- <image src="{{user.image_url}}" alt="user image"> -->
+          <image src="{{user.image_url}}" alt="user image">
           {{else}}
           <a href="/login"><li>Login</li></a>
           {{/if}}

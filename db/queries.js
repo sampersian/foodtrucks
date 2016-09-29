@@ -150,6 +150,7 @@ module.exports = {
 		});
 
   },
+  User,
   addNewOwner: function(first_name, last_name, username, password, email){
 
     if (!username || !password) {

@@ -8,7 +8,15 @@ router.get('/', function(req, res, next) {
   if(!req.user) {
     next();
 	}else {
-    res.render('index',{loggedIn: "yes"});
+    return queries.User().where('username', req.user)
+    .then(function(user) {
+        console.log(req.user);
+        // res.render('layout', {user: user[0]});
+
+        res.render('index',{loggedIn: "yes", user: user[0]});
+      })
+     .catch(function(error) {return next(error);
+    });
 
 	}
 });
@@ -24,10 +32,10 @@ router.get('/today/locations', function (req, res, next) {
 })
 
 router.get('/', function (req, res, next) {
-  return knex('user')
+  return knex('user').where('username', req.user)
   .then(function(user) {
-      console.log(user);
-      res.render('layout', {user: user});
+      console.log(req.user);
+      res.render('layout', {user: user[0]});
     })
    .catch(function(error) {return next(error);
   });
