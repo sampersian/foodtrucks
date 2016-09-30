@@ -56,7 +56,6 @@ passport.deserializeUser(function(username, done) {
 		} else {
 			return users[0].username;
 		}
-
 	})
 	.then((user) => {
 		done(null, user);

@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
   res.render('signup')
 });
 
+/*
 router.post('/', function (req, res, next) {
   if(req.body.userSignupPassword === req.body.userSignupPassword2){
     console.log('Password match');
@@ -28,10 +29,28 @@ router.post('/', function (req, res, next) {
     res.redirect('/signup');
   }
 })
+*/
+router.post('/', function (req, res, next) {
+    queries.getSingleOwnerByUsername(req.body.userSignupUsername).then(function(data){ // To lowercase
+      if(data.length===0){
+        queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
+          if(data.length===0){
+            next();
+          }
+          else{
+            res.render('signup',{errorMessage:"Username Already Taken Error # 4!"});
+          }
+        })
+      }
+      else {
+        res.render('signup',{errorMessage:"Username Already Taken Error # 3!"});
+      }
+    })
+})
+
 
 router.post('/', function (req, res, next) {
   queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic).then(function(data){
-    console.log('A new account was created successfully for User Account')
     res.redirect('/');
   })
 });
@@ -143,21 +162,24 @@ router.post('/truck/new', function (req, res, next) {
 
 
 router.post('/owner', function (req, res, next) {
-  if(req.body.ownerSignupPassword === req.body.ownerSignupPassword2){
-    console.log('Password match for Owner Account Creation');
-    queries.getSingleOwnerByUsername(req.body.ownerSignupUsername).then(function(data){
-      if(req.body.ownerSignupUsername===data[0].username){
-        console.log('Password match for Owner Account Creation');
-        res.send('Error Please Use A Different Username');
+    queries.getSingleUserByUsername(req.body.ownerSignupUsername).then(function(data){
+      if(data.length===0){
+        queries.getSingleOwnerByUsername(req.body.ownerSignupUsername).then(function(data){
+          if(data.length===0){
+            next();
+          }
+          else{
+            res.render('signup',{errorMessage:"Username Already Taken Error # 2!"});
+          }
+        })
       }
-    }).catch(function(){
-      next(); // If then returns error
+      else {
+        res.render('signup',{errorMessage:"Username Already Taken Error # 1!"});
+      }
     })
-  }
 })
 
 router.post('/owner', function (req, res, next) {
-  console.log('A new account was created successfully for Owner Account')
   queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, req.body.ownerSignupUsername, req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
     res.redirect('/');
   })
