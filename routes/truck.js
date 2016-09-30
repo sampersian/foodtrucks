@@ -33,7 +33,7 @@ router.get('/picture', function(req, res, next) {
   return queries.User().where('username', req.user)
   .then(function(user) {
       console.log(user[0].image_url);
-      // res.render('layout', {user: user[0]});
+      //res.render('layout', {user: user[0]});
 
       //res.render('truck',{loggedIn: "yes", user: user[0]});
     })
@@ -75,12 +75,13 @@ router.get('/:id', function(req,res,next) {
   .then(() => {
     return queries.GetTruckReviews(req.params.id)
   })
-  .then((reviews) => {
+  .then((reviews) => { // Is this correct? Somewhere within this code we need to put in images for our images for every user. Do another query.
     data.reviews=reviews;
     console.log(reviews);
     res.render('truck', {
-      truck: data,
+      truck: data, //
       loggedIn: "yes"
+      //user: user[0]
     });
   })
 })

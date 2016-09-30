@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 
 passport.use(new Local(
-	function(username, password, done) {
+	function((username).toLowerCase(), (password).toLowerCase(), done) {
 		console.log("PASSPORT", username)
 		query.getSingleUserByUsername(username)
 		.then(function(users) {
@@ -41,22 +41,21 @@ passport.serializeUser(function(user, done) {
 	done(null, user.username);
 });
 
-passport.deserializeUser(function(username, done) {
+passport.deserializeUser(function((username).toLowerCase(), done) {
 	console.log('b');
-	query.getSingleUserByUsername(username)
+	query.getSingleUserByUsername((username).toLowerCase())
 	.then(function(users){
 		console.log('c');
 		let user;
 		if (users.length === 0) {
 			console.log("not a user",username)
-			return query.getSingleOwnerByUsername(username)
+			return query.getSingleOwnerByUsername((username).toLowerCase())
 			.then((owners) => {
 				return owners[0].username;
 			})
 		} else {
 			return users[0].username;
 		}
-
 	})
 	.then((user) => {
 		done(null, user);

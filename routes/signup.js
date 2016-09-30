@@ -31,9 +31,9 @@ router.post('/', function (req, res, next) {
 })
 */
 router.post('/', function (req, res, next) {
-    queries.getSingleOwnerByUsername(req.body.userSignupUsername).then(function(data){
+    queries.getSingleOwnerByUsername((req.body.userSignupUsername).toLowerCase()).then(function(data){ // To lowercase
       if(data.length===0){
-        queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
+        queries.getSingleUserByUsername((req.body.userSignupUsername).toLowerCase()).then(function(data){
           if(data.length===0){
             next();
           }
@@ -50,16 +50,16 @@ router.post('/', function (req, res, next) {
 
 
 router.post('/', function (req, res, next) {
-  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic).then(function(data){
+  queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, (req.body.userSignupUsername).toLowerCase(), req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic).then(function(data){
     res.redirect('/');
   })
 });
 
 
 router.post('/owner', function (req, res, next) {
-    queries.getSingleUserByUsername(req.body.ownerSignupUsername).then(function(data){
+    queries.getSingleUserByUsername((req.body.ownerSignupUsername).toLowerCase()).then(function(data){
       if(data.length===0){
-        queries.getSingleOwnerByUsername(req.body.ownerSignupUsername).then(function(data){
+        queries.getSingleOwnerByUsername((req.body.ownerSignupUsername).toLowerCase()).then(function(data){
           if(data.length===0){
             next();
           }
@@ -75,7 +75,7 @@ router.post('/owner', function (req, res, next) {
 })
 
 router.post('/owner', function (req, res, next) {
-  queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, req.body.ownerSignupUsername, req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
+  queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, (req.body.ownerSignupUsername).toLowerCase(), req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
     res.redirect('/');
   })
 });
