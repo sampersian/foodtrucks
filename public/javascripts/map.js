@@ -59,7 +59,7 @@ function initMap() {
         })
       } else if (maptype === "truck") {
         $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
-        // $.get('http://localhost:3000/truck/schedule/'+anId)
+        // $.get('http://localhost:3000/api/schedule/'+anId)
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
