@@ -21,4 +21,21 @@ router.post('/new', function (req,res,next) {
   })
 })
 
+router.get('/user', function (req, res, next) {
+  let reviews,userdata;
+  queries.getAllReviews().where('username', req.user)
+  .then((reviewsdata) => {
+    reviews = reviewsdata;
+    return queries.User().where('username', req.user)
+  })
+  .then((userdata) => {
+    userdata = userdata[0];
+    res.render('userReviews', {
+      loggedIn: "yes",
+      reviews: reviews,
+      user: userdata
+    })
+  })
+})
+
 module.exports=router;
