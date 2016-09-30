@@ -49,12 +49,12 @@ router.get('/truck', function (req, res, next) {
 
 router.post('/truck/new', function (req, res, next) {
   console.log("Here!")
-  console.log(req.user)
+  var name=req.user;
   var identOwner=0;
-  queries.getOwnerByUsername('dunbarry')
+  queries.getOwnerByUsername(name)
   .then(function(owner){
     identOwner=owner.id;
-    // console.log(identOwner)
+    console.log(identOwner)
   })
   queries.getAllTrucks().insert({
     //This owner id is just a place holder.
