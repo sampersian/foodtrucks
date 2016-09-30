@@ -55,7 +55,7 @@ function initMap() {
           }
         })
         .then(() => {
-          showAllLocationsWithin(5);
+          showAllLocationsWithin(15);
         })
       } else if (maptype === "truck") {
         // $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
