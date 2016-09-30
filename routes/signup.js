@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
   res.render('signup')
 });
 
+/*
 router.post('/', function (req, res, next) {
   if(req.body.userSignupPassword === req.body.userSignupPassword2){
     console.log('Password match');
@@ -28,10 +29,28 @@ router.post('/', function (req, res, next) {
     res.redirect('/signup');
   }
 })
+*/
+router.post('/', function (req, res, next) {
+    queries.getSingleOwnerByUsername(req.body.userSignupUsername).then(function(data){
+      if(data.length===0){
+        queries.getSingleUserByUsername(req.body.userSignupUsername).then(function(data){
+          if(data.length===0){
+            next();
+          }
+          else{
+            res.render('signup',{errorMessage:"Username Already Taken Error # 4!"});
+          }
+        })
+      }
+      else {
+        res.render('signup',{errorMessage:"Username Already Taken Error # 3!"});
+      }
+    })
+})
+
 
 router.post('/', function (req, res, next) {
   queries.addNewUser(req.body.userSignupFirst, req.body.userSignupLast, req.body.userSignupUsername, req.body.userSignupPassword, req.body.userSignupEmail,req.body.userPic).then(function(data){
-    console.log('A new account was created successfully for User Account')
     res.redirect('/');
   })
 });
@@ -45,15 +64,14 @@ router.post('/owner', function (req, res, next) {
             next();
           }
           else{
-            res.render('signup',{errorMessage:"Username Already Taken - Error 2!"});
+            res.render('signup',{errorMessage:"Username Already Taken Error # 2!"});
           }
         })
       }
       else {
-        res.render('signup',{errorMessage:"Username Already Taken - Error 1!"});
+        res.render('signup',{errorMessage:"Username Already Taken Error # 1!"});
       }
     })
-
 })
 
 router.post('/owner', function (req, res, next) {
