@@ -210,4 +210,18 @@ router.get('/edit/new', function (req, res, next) {
     })
   })
 
+router.post('/update/:id', function(req,res,next){
+  console.log('Here!')
+  queries.getSingleTruck(req.params.id)
+  .update({
+    truck_name: req.body.truck_name,
+    image_url: req.body.image_url,
+    genre: req.body.genre,
+    description: req.body.description
+  },'id')
+  .then(function(id){
+    res.redirect('/truck/'+id[0])
+  })
+})
+
 module.exports = router;

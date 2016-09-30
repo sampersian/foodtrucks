@@ -1,5 +1,5 @@
 <main class='myMain'>
-  <form class='truckSignupForm ownerSignupForm' action='/signup/truck/new' method='post'>
+  <form class='truckSignupForm ownerSignupForm' action='/truck/update/{{truck.0.id}}' method='post'>
     <div class='formTopper'>
       <h3>Truck Register</h3>
     </div>
@@ -69,6 +69,6 @@
       <input type='text' class='form-control' name='SaturdayOpen' value='{{truck.6.open_time}}' required>
       <input type='text' class='form-control' name='SaturdayClose'value='{{truck.6.close_time}}' required>
     </div>
-    <input type='submit' class='form-control btn btn-success' id='ownerSignupSubmit' name='ownerSignupSubmit' value='Submit'>
+    <input type='submit' class='form-control btn btn-success' name='ownerSignupSubmit' value='Submit'>
   </form>
 </main>
