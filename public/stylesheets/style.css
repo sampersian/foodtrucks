@@ -428,3 +428,7 @@ header{
   width: 100%;
   color: red;
 }
+
+.navbarUserarea {
+  background-color: yellow;
+}
