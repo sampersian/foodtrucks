@@ -90,27 +90,4 @@ router.post('/owner', function (req, res, next) {
   })
 });
 
-//Owner Edit page
-router.get('/edit/:id', function (req, res, next) {
-  var ownerIdent=0;
-  queries.getOwnerByUsername(req.user)
-  .then(function(username){
-    ownerIdent=username.id
-    console.log(ownerIdent);
-  })
-  queries.getTruckByOwnerName(ownerIdent)
-  .then(function(truck){
-    if(truck.owner_id!==ownerIdent){
-      res.render('/');
-    }
-    else{
-      res.render('truckEdit', {
-        truck:truck
-      })
-    }
-  })
-});
-
-
-
 module.exports = router;

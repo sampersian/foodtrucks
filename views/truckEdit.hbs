@@ -1,74 +1,74 @@
 <main class='myMain'>
-  <form class='truckSignupForm ownerSignupForm' action='/signup/truck/new' method='post'>
+  <form class='truckSignupForm ownerSignupForm' action='/truck/update/{{truck.0.id}}' method='post'>
     <div class='formTopper'>
       <h3>Truck Register</h3>
     </div>
     <div class='form-group'>
       <label>Truck Name</label>
-      <input type='text' class='form-control' name='truck_name' placeholder='Truck Name' required>
+      <input type='text' class='form-control' name='truck_name' value='{{truck.0.truck_name}}' required>
     </div>
     <div class='form-group'>
       <label>Genre</label>
-      <input type='text' class='form-control' name='genre' placeholder='Three words or less.)' required>
+      <input type='text' class='form-control' name='genre' value='{{truck.0.genre}}' required>
     </div>
     <div class='form-group'>
       <label>Brief description of your truck:</label>
-      <input type='text' class='form-control' name='description' placeholder='All users will be able to read this description!' required>
+      <input type='text' class='form-control' name='description' value='{{truck.0.description}}' required>
     </div>
     <div class='form-group'>
       <label>Image URL</label>
-      <input type='text' class='form-control' name='image_url' placeholder='www.MyPic.com' required>
+      <input type='text' class='form-control' name='image_url' value='{{truck.0.image_url}}' required>
     </div>
     <h3>Schedule</h3>
     <div class='form-group'>
       <label>Sunday</label>
       <input type='hidden' name='dateSunday' value='Sunday'>
-      <input type='text' class='form-control' name='SundayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='SundayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='SundayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='SundayLocation' value='{{truck.0.location}}' required>
+      <input type='text' class='form-control' name='SundayOpen' value='{{truck.0.open_time}}' required>
+      <input type='text' class='form-control' name='SundayClose' value='{{truck.0.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Monday</label>
       <input type='hidden' name='dateMonday' value='Monday'>
-      <input type='text' class='form-control' name='MondayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='MondayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='MondayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='MondayLocation' value='{{truck.1.location}}' required>
+      <input type='text' class='form-control' name='MondayOpen' value='{{truck.1.open_time}}' required>
+      <input type='text' class='form-control' name='MondayClose' value='{{truck.1.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Tuesday</label>
       <input type='hidden' name='dateTuesday' value='Tuesday'>
-      <input type='text' class='form-control' name='TuesdayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='TuesdayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='TuesdayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='TuesdayLocation' value='{{truck.2.location}}' required>
+      <input type='text' class='form-control' name='TuesdayOpen' value='{{truck.2.open_time}}' required>
+      <input type='text' class='form-control' name='TuesdayClose' value='{{truck.2.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Wednesday</label>
       <input type='hidden' name='dateWednesday' value='Wednesday'>
-      <input type='text' class='form-control' name='WednesdayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='WednesdayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='WednesdayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='WednesdayLocation' value='{{truck.3.location}}' required>
+      <input type='text' class='form-control' name='WednesdayOpen' value='{{truck.3.open_time}}' required>
+      <input type='text' class='form-control' name='WednesdayClose' value='{{truck.3.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Thursday</label>
       <input type='hidden' name='dateThursday' value='Thursday'>
-      <input type='text' class='form-control' name='ThursdayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='ThursdayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='ThursdayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='ThursdayLocation' value='{{truck.4.location}}' required>
+      <input type='text' class='form-control' name='ThursdayOpen' value='{{truck.4.open_time}}' required>
+      <input type='text' class='form-control' name='ThursdayClose' value='{{truck.4.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Friday</label>
       <input type='hidden' name='dateFriday' value='Friday'>
-      <input type='text' class='form-control' name='FridayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='FridayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='FridayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='FridayLocation' value='{{truck.5.location}}' required>
+      <input type='text' class='form-control' name='FridayOpen' value='{{truck.5.open_time}}' required>
+      <input type='text' class='form-control' name='FridayClose' value='{{truck.5.close_time}}' required>
     </div>
     <div class='form-group'>
       <label>Saturday</label>
       <input type='hidden' name='dateSaturday' value='Saturday'>
-      <input type='text' class='form-control' name='SaturdayLocation' placeholder='Where will you be?' required>
-      <input type='text' class='form-control' name='SaturdayOpen' placeholder='When do you open?' required>
-      <input type='text' class='form-control' name='SaturdayClose' placeholder='When do you close?' required>
+      <input type='text' class='form-control' name='SaturdayLocation' value='{{truck.6.location}}' required>
+      <input type='text' class='form-control' name='SaturdayOpen' value='{{truck.6.open_time}}' required>
+      <input type='text' class='form-control' name='SaturdayClose'value='{{truck.6.close_time}}' required>
     </div>
-    <input type='submit' class='form-control btn btn-success' id='ownerSignupSubmit' name='ownerSignupSubmit' value='Submit'>
+    <input type='submit' class='form-control btn btn-success' name='ownerSignupSubmit' value='Submit'>
   </form>
 </main>
