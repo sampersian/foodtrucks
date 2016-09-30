@@ -86,6 +86,9 @@ module.exports = {
   getAllSchedules: function(id){
     return Schedule().where('id', truck_id);
   },
+  getAllTruckSchedules: function(){
+    return Schedule();
+  },
   getAllEvents: function(){
     return Event();
   },

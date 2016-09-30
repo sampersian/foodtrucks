@@ -35,7 +35,7 @@ function initMap() {
       // });
       if (maptype === "main") {
         $.get('https://hipfoodtrucks.herokuapp.com/today/locations')
-        //$.get('http://localhost:3000/today/locations')
+        // $.get('http://localhost:3000/today/locations')
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
@@ -59,7 +59,7 @@ function initMap() {
         })
       } else if (maptype === "truck") {
         $.get('https://hipfoodtrucks.herokuapp.com/api/schedule/'+anId)
-        //$.get('http://localhost:3000/api/schedule/'+anId)
+        // $.get('http://localhost:3000/truck/schedule/'+anId)
         .then((data) => {
           console.log("this is what our get to /today/locations returns ",data);
           let promises = [];
