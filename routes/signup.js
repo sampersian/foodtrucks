@@ -56,73 +56,73 @@ router.post('/truck/new', function (req, res, next) {
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Sunday,
+    date: req.body.dateSunday,
     location: req.body.SundayLocation,
     open_time: req.body.SundayOpen,
     close_time: req.body.SundayClose,
   })
   .then(function(){
-    console.log(req.body.Sunday, req.body.SundayLocation, req.body.SundayOpen, req.body.SundayClose)
+    console.log(req.body.dateSunday, req.body.SundayLocation, req.body.SundayOpen, req.body.SundayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Monday,
+    date: req.body.dateMonday,
     location: req.body.MondayLocation,
     open_time: req.body.MondayOpen,
     close_time: req.body.MondayClose,
   })
   .then(function(){
-    console.log(req.body.Monday, req.body.MondayLocation, req.body.MondayOpen, req.body.MondayClose)
+    console.log(req.body.dateMonday, req.body.MondayLocation, req.body.MondayOpen, req.body.MondayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Tuesday,
+    date: req.body.dateTuesday,
     location: req.body.TuesdayLocation,
     open_time: req.body.TuesdayOpen,
     close_time: req.body.TuesdayClose,
   })
   .then(function(){
-    console.log(req.body.Tuesday, req.body.TuesdayLocation,   req.body.TuesdayOpen, req.body.TuesdayClose)
+    console.log(req.body.dateTuesday, req.body.TuesdayLocation,   req.body.TuesdayOpen, req.body.TuesdayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Wednesday,
+    date: req.body.dateWednesday,
     location: req.body.WednesdayLocation,
     open_time: req.body.WednesdayOpen,
     close_time: req.body.WednesdayClose,
   })
   .then(function(){
-    console.log(req.body.Wednesday, req.body.WednesdayLocation, req.body.WednesdayOpen, req.body.WednesdayClose)
+    console.log(req.body.dateWednesday, req.body.WednesdayLocation, req.body.WednesdayOpen, req.body.WednesdayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Thursday,
+    date: req.body.dateThursday,
     location: req.body.ThursdayLocation,
     open_time: req.body.ThursdayOpen,
     close_time: req.body.ThursdayClose,
   })
   .then(function(){
-    console.log(req.body.Thursday, req.body.ThursdayLocation, req.body.ThursdayOpen, req.body.ThursdayClose)
+    console.log(req.body.dateThursday, req.body.ThursdayLocation, req.body.ThursdayOpen, req.body.ThursdayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Friday,
+    date: req.body.dateFriday,
     location: req.body.FridayLocation,
     open_time: req.body.FridayOpen,
     close_time: req.body.FridayClose,
   })
   .then(function(){
-    console.log(req.body.Friday, req.body.FridayLocation,     req.body.FridayOpen, req.body.FridayClose)
+    console.log(req.body.dateFriday, req.body.FridayLocation,     req.body.FridayOpen, req.body.FridayClose)
   })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
-    date: req.body.Saturday,
+    date: req.body.dateSaturday,
     location: req.body.SaturdayLocation,
     open_time: req.body.SaturdayOpen,
     close_time: req.body.SaturdayClose,
   })
   .then(function(){
-    console.log(req.body.Saturday, req.body.SaturdayLocation, req.body.SaturdayOpen, req.body.SaturdayClose)
+    console.log(req.body.dateSaturday, req.body.SaturdayLocation, req.body.SaturdayOpen, req.body.SaturdayClose)
     res.render('/truck/1');
     // This redirect is just a placeholder.
   })
