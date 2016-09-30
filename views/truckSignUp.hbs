@@ -1,34 +1,67 @@
-<main class="myMain">
-  <form class="truckSignupForm ownerSignupForm" action="/truck" method="post">
-    <div class="formTopper">
+<main class='myMain'>
+  <form class='truckSignupForm ownerSignupForm' action='/signup/truck/new' method='post'>
+    <div class='formTopper'>
       <h3>Truck Register</h3>
     </div>
-    <div class="form-group">
+    <div class='form-group'>
       <label>Truck Name</label>
-      <input type="text" class="form-control" name="truck_name" placeholder="Truck Name" required>
+      <input type='text' class='form-control' name='truck_name' placeholder='Truck Name' required>
     </div>
-    <div class="form-group">
+    <div class='form-group'>
       <label>Genre</label>
-      <input type="text" class="form-control" name="genre" placeholder="What style of food do you make? (three words or less)" required>
+      <input type='text' class='form-control' name='genre' placeholder='Three words or less.)' required>
     </div>
-    <div class="form-group">
+    <div class='form-group'>
       <label>Brief description of your truck:</label>
-      <input type="email" class="form-control" id="ownerSignupEmail" name="ownerSignupEmail" placeholder="All users will be able to read this description!" required>
+      <input type='text' class='form-control' name='description' placeholder='All users will be able to read this description!' required>
     </div>
-    <div class="form-group">
+    <div class='form-group'>
       <label>Image URL</label>
-      <input type="text" class="form-control" name="image_url" placeholder="www.MyPic.com" required>
+      <input type='text' class='form-control' name='image_url' placeholder='www.MyPic.com' required>
     </div>
     <h3>Schedule</h3>
-    <div class="form-group">
-      <label name='sunday'>Sunday</label>
-      <input type="text" class="form-control" name="sundayOpen" placeholder="When do you open?" required>
-      <input type="text" class="form-control" name="close" placeholder="When do you close?" required>
+    <div class='form-group'>
+      <label name='Sunday'>Sunday</label>
+      <input type='text' class='form-control' name='SundayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='SundayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='SundayClose' placeholder='When do you close?' required>
     </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="ownerSignupPassword2" name="ownerSignupPassword2" placeholder="Password Match" required>
+    <div class='form-group'>
+      <label name='Monday'>Monday</label>
+      <input type='text' class='form-control' name='MondayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='MondayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='MondayClose' placeholder='When do you close?' required>
     </div>
-    <input type="submit" class="form-control btn btn-success" id="ownerSignupSubmit" name="ownerSignupSubmit" value="Submit">
-    <input type="hidden" name="signupType" value="owner">
+    <div class='form-group'>
+      <label name='Tuesday'>Tuesday</label>
+      <input type='text' class='form-control' name='TuesdayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='TuesdayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='TuesdayClose' placeholder='When do you close?' required>
+    </div>
+    <div class='form-group'>
+      <label name='Wednesday'>Wednesday</label>
+      <input type='text' class='form-control' name='WednesdayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='WednesdayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='WednesdayClose' placeholder='When do you close?' required>
+    </div>
+    <div class='form-group'>
+      <label name='Thursday'>Thursday</label>
+      <input type='text' class='form-control' name='ThursdayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='ThursdayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='ThursdayClose' placeholder='When do you close?' required>
+    </div>
+    <div class='form-group'>
+      <label name='Friday'>Friday</label>
+      <input type='text' class='form-control' name='FridayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='FridayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='FridayClose' placeholder='When do you close?' required>
+    </div>
+    <div class='form-group'>
+      <label name='Saturday'>Saturday</label>
+      <input type='text' class='form-control' name='SaturdayLocation' placeholder='Where will you be?' required>
+      <input type='text' class='form-control' name='SaturdayOpen' placeholder='When do you open?' required>
+      <input type='text' class='form-control' name='SaturdayClose' placeholder='When do you close?' required>
+    </div>
+    <input type='submit' class='form-control btn btn-success' id='ownerSignupSubmit' name='ownerSignupSubmit' value='Submit'>
   </form>
 </main>
