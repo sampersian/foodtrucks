@@ -38,7 +38,13 @@ router.post('/', function (req, res, next) {
 
 // Truck signup
 router.get('/truck', function (req, res, next) {
-  res.render('truckSignUp')
+  return queries.User().where('username', req.user)
+  .then(function(user) {
+      console.log(req.user);
+      res.render('truckSignUp', {loggedIn: "yes", user: user[0]})
+    })
+   .catch(function(error) {return next(error);
+  });
 });
 
 router.post('/truck/new', function (req, res, next) {
