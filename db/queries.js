@@ -130,6 +130,9 @@ module.exports = {
   getTrucksByName: function(term){
     return Truck().where('truck_name', term);
   },
+  getTruckByOwnerName: function(term){
+    return Truck().where('owner_id', term);
+  },
   getOwnerByUsername: function(name){
     return Owner().where('username', name);
   },
