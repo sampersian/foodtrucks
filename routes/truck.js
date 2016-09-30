@@ -180,4 +180,34 @@ router.post('/new/signup', function (req, res, next) {
   })
 });
 
+//Owner Edit page
+router.get('/edit/new', function (req, res, next) {
+  // var ownerIdent=0;
+  queries.getOwnerByUsername(req.user)
+  .then(function(username){
+    // ownerIdent=username[0].id
+    return username[0].id
+  })
+  .then((username) => {
+    console.log(username)
+    queries.getTruckByOwnerName(username)
+    .then(function(truck){
+      console.log('Truck[0] is:',truck[0])
+      if(truck[0].owner_id!==username){
+        res.render('index');
+      }
+      else{
+        console.log('truck[0] is now',truck[0].id)
+        queries.getScheduleTruck(truck[0].id)
+        .then(function(showMe){
+          console.log('showMe is:',showMe)
+          res.render('truckEdit', {
+            truck:showMe
+            })
+          })
+        }
+      })
+    })
+  })
+
 module.exports = router;
