@@ -22,7 +22,8 @@ router.post('/new', function (req,res,next) {
 })
 
 router.get('/user', function (req, res, next) {
-  let reviews,userdata;
+  let reviews = [];
+  let userdata,isowner;
   queries.getAllReviews().where('review.username', req.user)
   .join('truck', 'review.truck_id', 'truck.id')
   .select('review.id as review_id', 'truck_id', 'content', 'is_positive', 'created_at', 'username', 'truck_name', 'genre')
@@ -33,10 +34,20 @@ router.get('/user', function (req, res, next) {
   })
   .then((userdata) => {
     userdata = userdata[0];
+    return queries.getSingleOwnerByUsername(req.user)
+  })
+  .then((data) => {
+    if(data.length===0){
+     next();
+    }
+    else{
+     isowner = "yes";
+    }
     res.render('userReviews', {
       loggedIn: "yes",
       reviews: reviews,
-      user: userdata
+      user: userdata,
+      isowner
     })
   })
 })
