@@ -44,13 +44,16 @@ router.get('/truck', function (req, res, next) {
 router.post('/truck/new', function (req, res, next) {
   console.log("Here!")
   queries.getAllTrucks().insert({
+    //This owner id is just a place holder.
     owner_id: 48,
     truck_name: req.body.truck_name,
     image_url: req.body.image_url,
     genre: req.body.genre,
     description: req.body.description
   })
-  console.log(req.body.truck_name, req.body.image_url, req.body.genre, req.body.description)
+  .then(function(){
+    console.log(req.body.truck_name, req.body.image_url, req.body.genre, req.body.description)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Sunday,
@@ -58,7 +61,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.SundayOpen,
     close_time: req.body.SundayClose,
   })
-  console.log(req.body.Sunday, req.body.SundayLocation, req.body.SundayOpen, req.body.SundayClose)
+  .then(function(){
+    console.log(req.body.Sunday, req.body.SundayLocation, req.body.SundayOpen, req.body.SundayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Monday,
@@ -66,7 +71,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.MondayOpen,
     close_time: req.body.MondayClose,
   })
-  console.log(req.body.Monday, req.body.MondayLocation, req.body.MondayOpen, req.body.MondayClose)
+  .then(function(){
+    console.log(req.body.Monday, req.body.MondayLocation, req.body.MondayOpen, req.body.MondayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Tuesday,
@@ -74,7 +81,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.TuesdayOpen,
     close_time: req.body.TuesdayClose,
   })
-  console.log(req.body.Tuesday, req.body.TuesdayLocation, req.body.TuesdayOpen, req.body.TuesdayClose)
+  .then(function(){
+    console.log(req.body.Tuesday, req.body.TuesdayLocation,   req.body.TuesdayOpen, req.body.TuesdayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Wednesday,
@@ -82,7 +91,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.WednesdayOpen,
     close_time: req.body.WednesdayClose,
   })
-  console.log(req.body.Wednesday, req.body.WednesdayLocation, req.body.WednesdayOpen, req.body.WednesdayClose)
+  .then(function(){
+    console.log(req.body.Wednesday, req.body.WednesdayLocation, req.body.WednesdayOpen, req.body.WednesdayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Thursday,
@@ -90,7 +101,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.ThursdayOpen,
     close_time: req.body.ThursdayClose,
   })
-  console.log(req.body.Thursday, req.body.ThursdayLocation, req.body.ThursdayOpen, req.body.ThursdayClose)
+  .then(function(){
+    console.log(req.body.Thursday, req.body.ThursdayLocation, req.body.ThursdayOpen, req.body.ThursdayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Friday,
@@ -98,7 +111,9 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.FridayOpen,
     close_time: req.body.FridayClose,
   })
-  console.log(req.body.Friday, req.body.FridayLocation, req.body.FridayOpen, req.body.FridayClose)
+  .then(function(){
+    console.log(req.body.Friday, req.body.FridayLocation,     req.body.FridayOpen, req.body.FridayClose)
+  })
   queries.getAllTruckSchedules().insert({
     truck_id: 48,
     date: req.body.Saturday,
@@ -106,8 +121,33 @@ router.post('/truck/new', function (req, res, next) {
     open_time: req.body.SaturdayOpen,
     close_time: req.body.SaturdayClose,
   })
-  console.log(req.body.Saturday, req.body.SaturdayLocation, req.body.SaturdayOpen, req.body.SaturdayClose)
-  res.render('/truck/1');
+  .then(function(){
+    console.log(req.body.Saturday, req.body.SaturdayLocation, req.body.SaturdayOpen, req.body.SaturdayClose)
+    res.render('/truck/1');
+    // This redirect is just a placeholder.
+  })
+});
+
+
+router.post('/owner', function (req, res, next) {
+  if(req.body.ownerSignupPassword === req.body.ownerSignupPassword2){
+    console.log('Password match for Owner Account Creation');
+    queries.getSingleOwnerByUsername(req.body.ownerSignupUsername).then(function(data){
+      if(req.body.ownerSignupUsername===data[0].username){
+        console.log('Password match for Owner Account Creation');
+        res.send('Error Please Use A Different Username');
+      }
+    }).catch(function(){
+      next(); // If then returns error
+    })
+  }
+})
+
+router.post('/owner', function (req, res, next) {
+  console.log('A new account was created successfully for Owner Account')
+  queries.addNewOwner(req.body.ownerSignupFirst, req.body.ownerSignupLast, req.body.ownerSignupUsername, req.body.ownerSignupPassword, req.body.ownerSignupEmail).then(function(data){
+    res.redirect('/');
+  })
 });
 
 

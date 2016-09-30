@@ -1,5 +1,6 @@
 <main class="myMain">
-  <form class="signupForm ownerSignupForm" action="/owner" method="post">
+  <h1 class="signupErrorMessage">{{errorMessage}}</h1>
+  <form class="signupForm ownerSignupForm" action="/signup/owner" method="post">
     <div class="formTopper">
       <h3>Owner Signup</h3>
       <button type="button" class="btn btn-info" name="showUserSignupButton" onclick="showForm('user')">User Signup</button>

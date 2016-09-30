@@ -1,5 +1,5 @@
 "use strict"
-
+var userIntention='true'
 let specified;
 let locations = [];
 let numberReviews = 0;
@@ -10,6 +10,24 @@ $(document).ready(function() {
     showForm(specified);
   } else {
     showForm('user')
+  }
+})
+
+$('.signupForm').submit((event) => {
+  let up1 = $('#userSignupPassword').val()
+  console.log(up1);
+  let up2 = $('#userSignupPassword2').val()
+  console.log(up2);
+  let op1 = $('#ownerSignupPassword').val()
+  console.log(op1);
+  let op2 = $('#ownerSignupPassword2').val()
+  console.log(op2);
+  if (up1 === up2 && op1 === op2) {
+    console.log("MAtch");
+    $('.signupForm').submit();
+  } else {
+    event.preventDefault();
+    $('.signupErrorMessage').text("Passwords do not match!")
   }
 })
 
@@ -151,6 +169,15 @@ function showTrucksWithType() {
   let term = $("#searchTerm").val().toLowerCase();
   for (let l of locations) {
     if (l.genre.toLowerCase().includes(term)) {
+      addMarker(l)
+    }
+  }
+}
+
+function showDay(day) {
+  deleteMarkers();
+  for (let l of locations) {
+    if (l.date === day) {
       addMarker(l)
     }
   }

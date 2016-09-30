@@ -5,16 +5,9 @@ html, body {
     padding: 0;
 }
 
-/*.navbar {
-  display: flex;
-  align-items: center;
-
+.directions {
+  color: blue;
 }
-
-.navbar-inverse {
-  display: flex;
-  align-items: center;
-}*/
 
 .circle {
   display: block;
@@ -332,6 +325,10 @@ header{
   border-right: 5px solid black;
 }
 
+.scheduleDay:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+
 .scheduleDay .scheduleDayName {
   color: black;
   font-weight: bold;
@@ -349,11 +346,15 @@ header{
   justify-content: center;
   align-items: center;
   padding: 10px;
+  font-size: 2vmin;
+  text-align: center;
 }
 
 .scheduleTime {
   display: block;
   color: black;
+  font-size: 2vmin;
+  text-align: center;
 }
 
 .scheduleLocation {
@@ -391,7 +392,7 @@ header{
 
 .profileJumboAdjust{
   width:70vw;
-  padding:1vw;
+  padding: 1vw 0vw;
 }
 
 .reviewContain{
@@ -419,4 +420,11 @@ header{
   font-size: 1.2em;
   background-color: silver;
   padding: 5px 20px 10px 20px;
+}
+
+
+.signupErrorMessage {
+  text-align: center;
+  width: 100%;
+  color: red;
 }
