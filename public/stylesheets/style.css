@@ -432,3 +432,50 @@ header{
 .navbarUserarea {
   background-color: yellow;
 }
+
+.reviewBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  margin: 5px 5vw;
+  padding: 20px 20px 10px 20px;
+  border-radius: 20px;
+}
+
+.reviewBoxTop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reviewBoxTop h5 {
+  margin: 5px 0px;
+}
+
+.reviewBoxTop a {
+  color: navy;
+}
+
+.reviewBoxMiddle {
+  padding: 20px;
+}
+
+.reviewBoxBottom {
+
+}
+
+.happy {
+  color: green;
+}
+
+.sad {
+  color: maroon;
+}
+
+.titleCenter {
+  text-align: center;
+  width: 100%;
+}

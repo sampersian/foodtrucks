@@ -31,6 +31,11 @@ $('.signupForm').submit((event) => {
   }
 })
 
+
+function deleteReview(id) {
+  window.location.href = "http://localhost:3000/review/delete/"+id;
+}
+
 function showForm(aForm) {
   $('.signupForm').hide()
   let formName = aForm+"SignupForm";

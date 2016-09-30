@@ -1,8 +1,28 @@
-<h1>whattup, {{user.username}}</h1>
+<h1 class="titleCenter">whattup, {{user.username}}</h1>
 
 {{#if reviews}}
-<h2>here are your reviews</h2>
-<h3>yeah, you have some reviews</h3>
+<h2 class="titleCenter">here are your reviews</h2>
+  {{#each reviews}}
+  <div class="reviewBox">
+    <div class="reviewBoxTop">
+      <a href="/truck/{{this.truck_id}}"><h5>{{this.truck_name}}</h5></a>
+      <h5>Created {{this.created_at}}</h5>
+    </div>
+    <div class="reviewBoxMiddle">
+      {{#if this.is_positive}}
+      <p class="happy">
+          "{{this.content}}"
+      {{else}}
+      <p class="sad">
+        "{{this.content}}"
+      {{/if}}
+      </p>
+    </div>
+    <div class="reviewBoxBottom">
+      <button type="button" name="deleteReviewButton" onclick="deleteReview({{this.review_id}})" class="btn btn-danger form-control">Delete</button>
+    </div>
+  </div>
+  {{/each}}
 {{else}}
-<h3>why don't you have any reviews</h3>
+<h3 class="titleCenter">why don't you have any reviews</h3>
 {{/if}}

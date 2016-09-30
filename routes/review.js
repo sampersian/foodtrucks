@@ -23,9 +23,12 @@ router.post('/new', function (req,res,next) {
 
 router.get('/user', function (req, res, next) {
   let reviews,userdata;
-  queries.getAllReviews().where('username', req.user)
+  queries.getAllReviews().where('review.username', req.user)
+  .join('truck', 'review.truck_id', 'truck.id')
+  .select('review.id as review_id', 'truck_id', 'content', 'is_positive', 'created_at', 'username', 'truck_name', 'genre')
   .then((reviewsdata) => {
     reviews = reviewsdata;
+    console.log(reviews);
     return queries.User().where('username', req.user)
   })
   .then((userdata) => {
@@ -35,6 +38,15 @@ router.get('/user', function (req, res, next) {
       reviews: reviews,
       user: userdata
     })
+  })
+})
+
+router.get('/delete/:id', function (req, res, next) {
+  console.log("deleting review "+req.params.id)
+  return queries.getAllReviews()
+  .where('id', req.params.id).del()
+  .then(() => {
+    res.redirect('/review/user');
   })
 })
 
