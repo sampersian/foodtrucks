@@ -130,6 +130,12 @@ module.exports = {
   getTrucksByName: function(term){
     return Truck().where('truck_name', term);
   },
+  getOwnerByUsername: function(name){
+    return Owner().where('username', name);
+  },
+  getUserByUsername: function(name){
+    return User().where('username', name);
+  },
 	// Get join
 	getScheduleTruck: function(id) {
 		return knex('schedule').join('truck', 'truck.id', 'schedule.truck_id').where('truck_id', id);
