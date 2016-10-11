@@ -479,3 +479,7 @@ header{
   text-align: center;
   width: 100%;
 }
+
+.logo {
+  margin: 15px 0px 15px 30px;
+}
